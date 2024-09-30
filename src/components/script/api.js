@@ -1,4 +1,4 @@
-const defaultUrl = 'http://localhost:4010';
+const defaultUrl = 'https://www.coincidence.co.kr';
 
 export async function getData(url){
   const res = await fetch(`${defaultUrl}${url}`, 
