@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" viewBox="0 0 30 30">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="30" height="30" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="반복_그리드_1" data-name="반복 그리드 1" clip-path="url(#clip-path)">
+    <g transform="translate(8489 23102)">
+      <rect id="사각형_22660" data-name="사각형 22660" width="30" height="30" rx="5" transform="translate(-8489 -23102)" fill="#fff"/>
+      <rect id="사각형_22666" data-name="사각형 22666" width="16" height="16" rx="5" transform="translate(-8482 -23095)" fill="#35ade3"/>
+    </g>
+  </g>
+</svg>
