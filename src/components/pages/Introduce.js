@@ -6,9 +6,6 @@ import 'swiper/swiper-bundle.min.css';
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-//import { requestGet } from "../../apis/request";
-
-
 import Popup from '../Popup';
 
 import mainSlide1 from '../../assets/img/main_slide_pc1.png';
@@ -125,7 +122,7 @@ export default function Main(){
               <p className="t1" ref={(el) => (elementsRef.current[3] = el)}>안녕하세요. 우연, 우리의 인연 강바다 대표입니다.<br/>여러 결정사에 고액의 비용을 쓰고나니 이들이 정말 내 결혼을 시켜줄 의지가 있는 것인지 나를 이용해서 매출 증대만 꾀하는 것인지 의문이 들었습니다.</p>
               <p className="t1 mt40" ref={(el) => (elementsRef.current[4] = el)}>그리고 다짐했습니다.<br/>"회원들의 성혼만을 목표로 하는 정직한 결혼 정보회사를 직접 만들자"<br/><span className="c1 ffsd6" ref={(el) => (elementsRef.current[5] = el)}>"불합리한 모든 것을 바꾸어 결정사의 새 기준을 세우는 그런 결정사를 만들자"</span><br/>지금도 가장 결정사 다운 결정사를 만들기 위해 노력하고 있습니다.</p>
               <figure className="vdo mt40" ref={(el) => (elementsRef.current[6] = el)}>
-              <iframe src="https://player.vimeo.com/video/930496837?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" title="대성홀딩스"></iframe>
+              <iframe src="https://player.vimeo.com/video/1014234794?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;title=0&amp;byline=0&amp;portrait=0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write"></iframe>
               </figure>
               <p className="t1 mt20" ref={(el) => (elementsRef.current[7] = el)}>여러분의 행복한 결혼 성사만을 바라기 위해 우연은 구독자 90만명을 보유한 연애분야 1위 유튜버 김달님께서 기획 및 개발에 함께 참여하였습니다.</p>
             </div>

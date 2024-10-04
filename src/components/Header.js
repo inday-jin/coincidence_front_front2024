@@ -4,7 +4,7 @@ const Nav = function(){
   return(
     <nav>
       <ul>
-        <li className="fz18 ffsb"><a href="/dashboard">우연은?</a></li>
+        <li className="fz18 ffsb"><a href="/introduce">우연은?</a></li>
         <li className="fz18 ffsb"><a href="/whypage">서비스 소개</a>
           <ul>
             <li className="fz16"><a href="/whypage">왜 우연인가?</a></li>
@@ -40,7 +40,7 @@ export default function Header({blue_logo}){
     <>
       <header id="header" className={`header ${blue_logo ? 'blue_logo' : 'white_logo'} ${mobileMenuView === true ? 'm_open' : ''} tn`}>
         <div className="header_container">
-          <h1><a href="/introduce" className="header_logo tn">우연 우리의인연</a></h1>
+          <h1><a href="/dashboard" className="header_logo tn">우연 우리의인연</a></h1>
           <Nav/>
           <div className="hd_contact">
             <a href="tel:02-2138-0638">

@@ -9,6 +9,8 @@ export default function PageTop({ topPath }) {
 
   const pathClassSlice = topPath.pathname.split('/');
   const titleObj = {
+    dashboard: '우리의 인연',
+    introduce: '우연은?',
     whypage: '왜 우연인가?',
     process: '우연 프로세스',
     products: '가입 안내',
@@ -19,6 +21,8 @@ export default function PageTop({ topPath }) {
   }
 
   useEffect(() => {
+    document.title = pathClassSlice[1] === 'dashboard' ? titleObj[pathClassSlice[1]] : titleObj[pathClassSlice[1]]+' | 우리의 인연';
+
     gsap.fromTo(
       elementRef.current, 
       {
