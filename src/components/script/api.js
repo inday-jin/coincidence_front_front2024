@@ -1,5 +1,5 @@
-//const defaultUrl = 'https://www.coincidence.co.kr';
-const defaultUrl = 'http://localhost:4000';
+const defaultUrl = 'https://www.coincidence.co.kr';
+//const defaultUrl = 'http://localhost:4000';
 
 export async function getData(url){
   const res = await fetch(`${defaultUrl}${url}`, 
