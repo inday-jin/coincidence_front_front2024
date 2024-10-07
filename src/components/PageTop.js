@@ -21,7 +21,8 @@ export default function PageTop({ topPath }) {
   }
 
   useEffect(() => {
-    document.title = pathClassSlice[1] === 'dashboard' ? titleObj[pathClassSlice[1]] : titleObj[pathClassSlice[1]]+' | 우리의 인연';
+    console.log(pathClassSlice[1])
+    document.title = pathClassSlice[1] !== 'dashboard' && pathClassSlice[1] !== '' ? titleObj[pathClassSlice[1]]+' | 우리의 인연' : '우리의 인연';
 
     gsap.fromTo(
       elementRef.current, 
