@@ -266,6 +266,52 @@ export default function ConsultRequest(){
           event_label: 'consultation_request'
         });
       }
+
+      const locationKor = locationList.filter(item => item.id === formData.location);
+
+      let ageRanges = [
+        { min: 18, max: 21, range: '18-21' },
+        { min: 22, max: 24, range: '22-24' },
+        { min: 25, max: 29, range: '25-29' },
+        { min: 30, max: 34, range: '30-34' },
+        { min: 35, max: 39, range: '35-39' },
+        { min: 40, max: 44, range: '40-44' },
+        { min: 45, max: 49, range: '45-49' },
+        { min: 50, max: 54, range: '50-54' },
+        { min: 55, max: 59, range: '55-59' },
+        { min: 60, max: 64, range: '60-64' },
+        { min: 65, max: 69, range: '65-69' },
+        { min: 70, max: 74, range: '70-74' }
+      ];
+      const nowDate = new Date();
+      const age = nowDate.getFullYear() - Number(formData.birth_year) +1;
+      function getAgeRange(age) {
+        const ageRange = ageRanges.find(range => age >= range.min && age <= range.max);
+        return ageRange ? ageRange.range : 'Unknown range';
+      }
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "generate_lead",
+        ecommerce: {
+        currency: 'KRW', // 통화 정보
+        value: 10000, // 리드 가치
+        },
+        branch: locationKor[0].name,
+        counselor_gender: formData.conGender,
+        first_date: formData.firstDate,
+        first_time: formData.firstDateTime,
+        second_date: formData.secondDate,
+        second_time: formData.secondDateTime,
+        birth_year: formData.birth_year,
+        age: getAgeRange(age),
+        gender: formData.gender === '남자' ? 'Male' : 'Female',
+        region: formData.region,
+        education: formData.education,
+        recommender: formData.recommender !== '' ? 'Y' : 'N',
+      });
+
+
       navigate('/result');
     }else{}
   }
