@@ -12,8 +12,6 @@ import mainSlide1 from '../../assets/img/main_slide_pc1.png';
 import mainSlide1m from '../../assets/img/main_slide_m1.png';
 import mainSlide2 from '../../assets/img/main_slide_pc2.png';
 import mainSlide2m from '../../assets/img/main_slide_m2.png';
-// import mainSlide3 from '../../assets/img/main_slide_pc3.png';
-// import mainSlide3m from '../../assets/img/main_slide_m3.png';
 
 import introImg from '../../assets/img/main_intro_img.png';
 
@@ -119,7 +117,7 @@ export default function Main(){
               <figcaption>우리의 인연 대표<p className="name ffsd6">강바다</p></figcaption>
             </figure>
             <div className="txt">
-              <p className="t1" ref={(el) => (elementsRef.current[3] = el)}>안녕하세요. 우연, 우리의 인연 강바다 대표입니다.<br/>여러 결정사에 고액의 비용을 쓰고나니 이들이 정말 내 결혼을 시켜줄 의지가 있는 것인지 나를 이용해서 매출 증대만 꾀하는 것인지 의문이 들었습니다.</p>
+              <p className="t1" ref={(el) => (elementsRef.current[3] = el)}>안녕하세요. 우연, 우리의 인연 강바다 대표입니다.<br/>여러 결정사에 고액의 비용을 쓰고나니 이들이 정말 내 결혼을 시켜줄 의지가 <span className="pc_br"></span>있는 것인지 나를 이용해서 매출 증대만 꾀하는 것인지 의문이 들었습니다.</p>
               <p className="t1 mt40" ref={(el) => (elementsRef.current[4] = el)}>그리고 다짐했습니다.<br/>"회원들의 성혼만을 목표로 하는 정직한 결혼 정보회사를 직접 만들자"<br/><span className="c1 ffsd6" ref={(el) => (elementsRef.current[5] = el)}>"불합리한 모든 것을 바꾸어 결정사의 새 기준을 세우는 그런 결정사를 만들자"</span><br/>지금도 가장 결정사 다운 결정사를 만들기 위해 노력하고 있습니다.</p>
               <figure className="vdo mt40" ref={(el) => (elementsRef.current[6] = el)}>
               <iframe src="https://player.vimeo.com/video/1014234794?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;title=0&amp;byline=0&amp;portrait=0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write"></iframe>

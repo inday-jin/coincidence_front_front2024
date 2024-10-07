@@ -51,7 +51,7 @@ export default function Part5(props){
                 <div className="txt">
                   <p className="t1 ffsd6">비싼비용</p>
                   <p className="t2 ffsd6">"한번 매칭에..40만원?"</p>
-                  <p className="t3">횟수제와 기간제의 불공정 계약을 대입해보니<br/> 한번 만남에 40-100만원 가량!?</p>
+                  <p className="t3">횟수제와 기간제의 불공정 계약을 대입해보니 <span className="pc_br"></span>한번 만남에 40-100만원 가량!?</p>
                 </div>
               </div>
               <div className="box blue_type" ref={(el) => (elementsRef.current[3] = el)}>
@@ -62,7 +62,7 @@ export default function Part5(props){
                 <div className="txt">
                   <p className="t1 ffsd6">합리적인 가격</p>
                   <p className="t2 ffsd6">1년 기간제 가입 기준 25~50% 합리적인 가격 책정!</p>
-                  <p className="t3">회원 여러분들의 상황과 고민에 맞게 4개월, 8개월 기간제도<br/> 준비되어 있습니다.</p>
+                  <p className="t3">회원 여러분들의 상황과 고민에 맞게 4개월, 8개월 기간제도 <span className="pc_br"></span>준비되어 있습니다.</p>
                 </div>
               </div>
             </div>

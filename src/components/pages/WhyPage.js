@@ -71,7 +71,7 @@ export default function Whypage(path){
             <span>대형 결정사여서 인증 받기가 까다로울 줄 알았는데</span>
             <span className="point">의외로 너무 간단하거나 자산인증을 아예 안해서 놀랐어요</span>
           </h3>
-          <p className="ffsb fz22 ffsbr" ref={(el) => (elementsRef.current[5] = el)}>내가 말하는 대로만 적고, 사실 여부는 확인 하지 않은채 오로지 규약서에만 의지한 인증을 거치면서 과연 이 인증이 철저하고 제대로 된 인증이었을까, 관계가 깊어 졌을때 오해가 생겨 관계가 틀어지진 않을까 하는 걱정이 들었습니다.<br/>그래서 법무 법인을 통한 철저한 자산 인증 시스템을 구축 했습니다.</p>
+          <p className="ffsb fz22 ffsbr" ref={(el) => (elementsRef.current[5] = el)}>내가 말하는 대로만 적고, 사실 여부는 확인 하지 않은채 오로지 규약서에만 의지한 인증을 거치면서 과연 이 인증이 철저하고 제대로 된 인증이었을까, <span className="pc_br"></span>관계가 깊어 졌을때 오해가 생겨 관계가 틀어지진 않을까 하는 걱정이 들었습니다.<br/>그래서 법무 법인을 통한 철저한 자산 인증 시스템을 구축 했습니다.</p>
         </section>
       </div>
       <Part3 main={false}/>
@@ -81,7 +81,7 @@ export default function Whypage(path){
             <span>프로필을 보고 이상형이라 생각하고 만났더니</span>
             <span className="point">사진과 실물이 정말 다른 분이 나오셔서 당황했어요</span>
           </h3>
-          <p className="ffsb fz22 ffsbr" ref={(el) => (elementsRef.current[7] = el)}>작은 눈이 큰 눈으로, 173cm가 180cm로, 당사자 동의 없이 사진을 보정하고 프로필을 수정한 것을 알았을 때 내가 만날 분들도 그러겠단 생각이 들었습니다.<br/>횟수 차감 목적으로 이루어진 과도한 보정과 프로필 수정으로 상대방도, 당사자도 감정 소모와 시간이 낭비되는 것에 염증을 느껴 프사기, 키사기 방지 시스템을 구축하게 되었습니다.</p>
+          <p className="ffsb fz22 ffsbr" ref={(el) => (elementsRef.current[7] = el)}>작은 눈이 큰 눈으로, 173cm가 180cm로, 당사자 동의 없이 사진을 보정하고 프로필을 수정한 것을 알았을 때 내가 만날 분들도 그러겠단 생각이 들었습니다.<br/>횟수 차감 목적으로 이루어진 과도한 보정과 프로필 수정으로 상대방도, 당사자도 감정 소모와 시간이 낭비되는 것에 <span className="pc_br"></span>염증을 느껴 프사기, 키사기 방지 시스템을 구축하게 되었습니다.</p>
         </section>
       </div>
       <section className="part_wrap why_part04">
@@ -122,7 +122,7 @@ export default function Whypage(path){
             <span>나와 맞지 않는 사람만 소개해주셔서</span>
             <span className="point">환불 신청을 했더니 환불 금액은 고작?</span>
           </h3>
-          <p className="ffsb fz22 ffsbr" ref={(el) => (elementsRef.current[13] = el)}>수천만원을 들여 가입한 노블사, 수백만원을 들여 가입한 일반사 모두 만족할 수 없어서 환불 요청을 했더니 약정 횟수, 과도한 서비스 이용 부금 등 너무 불합리한 환불 시스템이 있다는 걸 알았습니다.<br/><span className="c1 ffsbb">"환불을 염두에 두고 운영하는건가"</span> 하는 생각까지 들 정도였습니다.<br/>기간제 약정 횟수를 모두 없애고 진실되게 서비스하고 공정하게 환불하자고 다짐 했습니다.</p>
+          <p className="ffsb fz22 ffsbr" ref={(el) => (elementsRef.current[13] = el)}>수천만원을 들여 가입한 노블사, 수백만원을 들여 가입한 일반사 모두 만족할 수 없어서 환불 요청을 했더니 약정 횟수, 과도한 서비스 이용 부금 등 <span className="pc_br"></span>너무 불합리한 환불 시스템이 있다는 걸 알았습니다.<br/><span className="c1 ffsbb">"환불을 염두에 두고 운영하는건가"</span> 하는 생각까지 들 정도였습니다.<br/>기간제 약정 횟수를 모두 없애고 진실되게 서비스하고 공정하게 환불하자고 다짐 했습니다.</p>
         </section>
       </div>
       <Part4 main={false}/>
@@ -152,10 +152,10 @@ export default function Whypage(path){
             <figure className="img" ref={(el) => (elementsRef.current[17] = el)}><img src={partyImg} alt="" /></figure>
           </div>
           <div className="txt_cont">
-            <p className="part_tit ffsd6" ref={(el) => (elementsRef.current[18] = el)}><span className="mark_bg">만족도 최상,<br/>우연 오프라인 파티</span></p>
-            <p className="mt40 fz18 c3" ref={(el) => (elementsRef.current[19] = el)}>"정말 멋지고 예쁘고 매너 좋은 분들이 너무 많으셨어요.<br/> 역시 나가서 직접 만나서 이야기 해보니까 저에 대해 많이<br/> 돌아볼 수 있었고 좋은 인연 만나서 너무 좋았습니다"</p>
+            <p className="part_tit ffsd6" ref={(el) => (elementsRef.current[18] = el)}><span className="mark_bg">만족도 최상,<br/>우연 오프라인 와인 파티</span></p>
+            <p className="mt40 fz18 c3" ref={(el) => (elementsRef.current[19] = el)}>“정말 멋지고 예쁘고, 매너 좋은 분들이 너무 많으셨어요.<br/>역시 직접 만나서 이야기 해보니까 <span className="pc_br"></span>저에 대해 많이 돌아볼 수 있었고, 좋은 인연을 만나서 너무 좋았습니다“</p>
             <p className="mt20 fz18 c3" ref={(el) => (elementsRef.current[20] = el)}>우연의 오프라인 파티는 "진솔한 대화"에 중점을 두고 기획하고 있습니다.</p>
-            <p className="mt20 fz18 c3" ref={(el) => (elementsRef.current[21] = el)}>이렇게 멋지고 예쁜 회원님들을 매칭 소개로만 보내기 아쉬워서 직접 만나서 이야기를 나누며 인연을 찾는 자리를 적극적으로 만들어가고 있습니다.</p>
+            <p className="mt20 fz18 c3" ref={(el) => (elementsRef.current[21] = el)}>매칭 소개로만 회원님들을 어필하기 아쉬워서 <span className="pc_br"></span>직접 여러 회원분들이 서로 만나 인연을 찾는 자리를 <span className="pc_br"></span>적극적으로 만들어가고 있습니다.</p>
             <a href="/partyReview" className="part_more" ref={(el) => (elementsRef.current[22] = el)}>파티 후기 보러가기</a>
           </div>
         </div>

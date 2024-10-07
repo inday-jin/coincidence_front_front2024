@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="160" height="19.24" viewBox="0 0 160 19.24">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="160" height="19.24" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="반복_그리드_1" data-name="반복 그리드 1" clip-path="url(#clip-path)">
+    <g transform="translate(-844 -1273.5)">
+      <line id="선_2" data-name="선 2" x2="160" transform="translate(844 1274)" fill="none" stroke="#999" stroke-width="1"/>
+      <line id="선_3" data-name="선 3" x2="20" transform="translate(989.343 1288.143) rotate(-45)" fill="none" stroke="#999" stroke-width="1"/>
+      <path id="다각형_96" data-name="다각형 96" d="M2.5,0,5,4H0Z" transform="translate(988.282 1292.74) rotate(-135)" fill="#999"/>
+    </g>
+  </g>
+</svg>

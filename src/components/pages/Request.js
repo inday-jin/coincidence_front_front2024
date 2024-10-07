@@ -201,7 +201,11 @@ export default function ConsultRequest(){
     };
     const emptyFields = findEmptyFields(formData);
     if (emptyFields.length > 0) {
-      setSbmBtnDisabled(true);
+      if(emptyFields.length === 1 && emptyFields.indexOf('recommender') !== -1){
+        setSbmBtnDisabled(false);
+      }else{
+        setSbmBtnDisabled(true);
+      }
     } else {
       setSbmBtnDisabled(false);
     }
@@ -209,7 +213,6 @@ export default function ConsultRequest(){
 
   async function sbm(e){
     // 등록
-    console.log('sbmit')
     e.preventDefault();
 
     const body = {
@@ -264,9 +267,7 @@ export default function ConsultRequest(){
         });
       }
       navigate('/result');
-    }else{
-      //console.log('실패')
-    }
+    }else{}
   }
 
   const elementsRef = useRef([]);
@@ -423,7 +424,7 @@ export default function ConsultRequest(){
                 {educationData.map((item, i) => {
                   return(
                     <label htmlFor={`education${i}`} className="check_label fz16" key={i}>
-                      <input type="radio" id={`education${i}`} name="education" checked={formData.education === item.id} value={item.id} onChange={changeValue} />
+                      <input type="radio" id={`education${i}`} name="education" checked={Number(formData.education) === Number(item.id)} value={item.id} onChange={changeValue} />
                       <div className="c">{item.name}</div>
                     </label>
                   )
@@ -432,14 +433,14 @@ export default function ConsultRequest(){
             </div>
             
             <div className="inp_line pb40">
-              <div className="inp_item" ref={(el) => (elementsRef.current[12] = el)}>
-                <p className="t fz18 ffsd6 pb25">추천인</p>
-                <input type="text" className="inp" name="recommender" value={formData.recommender} onChange={changeValue} />
-              </div>
               <div className="inp_item" ref={(el) => (elementsRef.current[13] = el)}>
                 <p className="t fz18 ffsd6 pb25">카카오톡 ID</p>
                 <input type="text" className="inp" name="kakaoTalkId" value={formData.kakaoTalkId} onChange={changeValue} />
-                <p className="pt10 c6">* 최근 카카오톡 전화번호로 친구 추가 허용을 막아놓은 분들이 많아 업무상 연락이 힘들어 카톡 아이디도 함께 작성 부탁드립니다</p>
+                <p className="pt10 c6">*전화번호로 친구 추가 허용을 막아놓은 분들이 많아 업무상 연락이 힘들어 카톡 아이디도 함께 작성 부탁드립니다</p>
+              </div>
+              <div className="inp_item" ref={(el) => (elementsRef.current[12] = el)}>
+                <p className="t fz18 ffsd6 pb25">추천인</p>
+                <input type="text" className="inp" name="recommender" value={formData.recommender} onChange={changeValue} />
               </div>
             </div>
             <div className="inp_line_block pb40" ref={(el) => (elementsRef.current[14] = el)}>

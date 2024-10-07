@@ -65,7 +65,7 @@ export default function Part2(props){
                 <p className="type ffsd6">우연시스템</p>
                 <div className="txt">
                   <p className="t1 ffsd6">평균 나이 30대 남녀<br/> 성혼 전문 매니저</p>
-                  <p className="t3">상담과 소통에 있어 편안함을 느낄 수 있는 남녀 평균 30대의 전문 매니저들로 구성 되어 고객의 니즈를 가장 잘 알고 깊게 공감하여 케어하고 있습니다.</p>
+                  <p className="t3">상담과 소통에 있어 편안함을 느낄 수 있는 <span className="pc_br"></span>남녀 평균 30대의 전문 매니저들로 구성 되어 고객의 니즈를 가장 잘 알고 깊게 공감하여 케어하고 있습니다.</p>
                 </div>
               </div>
             </div>
@@ -84,8 +84,8 @@ export default function Part2(props){
                 <p className="type ffsd6">우연시스템</p>
                 <div className="txt">
                   <p className="t1 ffsd6">상담 매니저와 매칭 매니저가<br/> 동일한 원-매니저 시스템</p>
-                  <p className="t2 ffsd6">대한민국 최초, 우연의 매니저는<br/> 상담부터 매칭까지!</p>
-                  <p className="t3">여러분을 직접 보고 깊이 이해한 매니저가 매칭과, 케어, 그리고 결혼까지 모두 책임 집니다.</p>
+                  <p className="t2 ffsd6">대한민국 최초, 우연의 매니저들은 <span className="pc_br"></span>상담부터 매칭까지!</p>
+                  <p className="t3">우연의 상담은 가입만을 위한 상담이 아닌 <span className="pc_br"></span>매칭을 목적으로 한 상담입니다.<br/>여러분을 직접 대면하고 깊이 이해한 <span className="pc_br"></span>매니저가 상담 부터 매칭, 그리고 <span className="pc_br"></span>결혼까지 모두 책임 집니다.</p>
                 </div>
               </div>
             </div>

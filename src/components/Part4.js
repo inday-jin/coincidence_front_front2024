@@ -51,7 +51,8 @@ export default function Part5(props){
                 <div className="txt">
                   <p className="t1 ffsd6">불공정 계약</p>
                   <p className="t2 ffsd6">"몇번 만나지도 않았는데 환불비가..?"</p>
-                  <p className="t3">예를 들어 3+3 횟수제 가입자가 3회 만난 후 환불 요청한다면 <br/>환불 금액은 얼마일까요? 놀랍게도 0원! <br/>+3은 서비스 여서 환불 기준에서 제외 되기 때문입니다.<br/>550만원 짜리 기간제의 경우 500만원짜리 약정횟수 규약서와 50만원 짜리 기간 규약서를 두장 쓰는 곳도 있습니다. 약정횟수 이후 환불 시 환불 기준은 적은 금액의 기간제 규약서에 의해 진행되기에 환불금액이 매우 낮습니다.</p>
+                  <p className="t3">예를 들어 3+3 횟수제 가입자가 3회 만난 후 환불 요청한다면 <br/>환불 금액은 얼마일까요? 놀랍게도 0원! <br/>+3은 서비스 여서 환불 기준에서 제외 되기 때문입니다.</p>
+                  <p className="t3">550만원 짜리 기간제의 경우 500만원짜리 약정횟수 규약서와 50만원 짜리 기간 규약서를 두장 쓰는 곳도 있습니다. 약정횟수 이후 환불 시 환불 기준은 적은 금액의 기간제 규약서에 의해 진행되기에 환불금액이 매우 낮습니다.</p>
                 </div>
               </div>
               <div className="box blue_type" ref={(el) => (elementsRef.current[3] = el)}>
@@ -60,9 +61,9 @@ export default function Part5(props){
                   <figure className="img"><img src={part4Img2} alt="" /></figure>
                 </div>
                 <div className="txt">
-                  <p className="t1 ffsd6">불공정 환불 NO</p>
-                  <p className="t2 ffsd6">약정 횟수, 미차감 시스템? 우연엔 없습니다.</p>
-                  <p className="t3">타사는 약정 횟수 이후에는 환불이 어렵지만 우연은 이용 기간만큼만 제외하고 깔끔하게 전액 환불! 약정 횟수가 없다고 걱정 마세요, 우연은 성혼이 곧 우연의 목표이기에 자신 있게 인연 만들기 제안을 지속 합니다.</p>
+                  <p className="t1 ffsd6">우연은 공정거래위원회 국내 결혼 표준 약관을 100% 준수합니다.</p>
+                  <p className="t2 ffsd6">약정 횟수? 우연엔 없습니다.</p>
+                  <p className="t3">타사는 약정 횟수 이후에는 환불이 어렵지만 <span className="pc_br"></span>우연은 실제 이용 기간만 제외하고 깔끔하게 전액 환불!<br/>성혼이 곧 우연의 목표이기에 자신있게 인연 만들기 제안을 지속합니다.</p>
                 </div>
               </div>
             </div>
