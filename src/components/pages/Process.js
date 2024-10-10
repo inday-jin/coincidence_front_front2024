@@ -127,7 +127,6 @@ export default function Process(){
               <p className="t1 fz30 ffsd6">우리의 인연</p>
               <p className="t2 fz18">내게 꼭 맞는 인연을 만나셨다면 이제 예쁜 사랑을 키워나가세요!</p>
               <p className="t2 fz18">우연은 언제나 회원님들의 사랑을 응원 합니다.</p>
-              <a href="/coupleReview" className="fz18 ffsd6">파티 후기 보기</a>
             </div>
           </div>
         </div>

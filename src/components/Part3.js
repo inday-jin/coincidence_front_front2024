@@ -64,7 +64,7 @@ export default function Part3(props){
                 <p className="type ffsd6">우연시스템</p>
                 <div className="txt">
                   <p className="t1 ffsd6">오해를 줄이는 정확하게 검증된 정보</p>
-                  <p className="t2 ffsd6">우연에는 자산 뻥튀기가 없습니다.</p>
+                  <p className="t2 ffsd6">법인 미인증 자산은 표기하지 않습니다.</p>
                   <p className="t3">자산과 부채를 법무법인과 함께 명확하게 인증하고 구분하여 프로필에 기재하고 있습니다.</p>
                   <p className="t3">* 제출 서류<br/><span className="c6">재직 증명서, 연봉 계약서, 은행&주식 잔고 확인서, 등기부 등본 (부채 표시)</span></p>
                 </div>

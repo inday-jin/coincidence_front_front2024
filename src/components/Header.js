@@ -1,19 +1,37 @@
 import { useEffect, useState } from 'react';
 
-const Nav = function(){
+
+const Nav = function(type){
+  const [sOpen1, setSopen1] = useState(false);
+  const [sOpen2, setSopen2] = useState(false);
+
+
+  function typeCheck(e,type, i){
+    if(type.type === 'mobile'){
+      e.preventDefault();
+      if(i === 1){
+        setSopen1(!sOpen1);
+        setSopen2(false);
+      }else{
+        setSopen1(false);
+        setSopen2(!sOpen2);
+      }
+    }
+  }
+
   return(
     <nav>
       <ul>
         <li className="fz18 ffsb"><a href="/introduce">우연은?</a></li>
-        <li className="fz18 ffsb"><a href="/whypage">서비스 소개</a>
-          <ul>
+        <li className="fz18 ffsb"><a href="/whypage" onClick={e =>typeCheck(e, type, 1)}>서비스 소개</a>
+          <ul className={sOpen1 === true ? 'db' : ''}>
             <li className="fz16"><a href="/whypage">왜 우연인가?</a></li>
             <li className="fz16"><a href="/process">우연 프로세스</a></li>
             <li className="fz16"><a href="/products/list">가입 안내</a></li>
           </ul>
         </li>
-        <li className="fz18 ffsb"><a href="/coupleReview">회원 리뷰</a>
-          <ul>
+        <li className="fz18 ffsb"><a href="/coupleReview" onClick={e =>typeCheck(e, type, 2)}>회원 리뷰</a>
+          <ul className={sOpen2 ? 'db' : ''}>
             <li className="fz16"><a href="/coupleReview">우연 커플 후기</a></li>
             <li className="fz16"><a href="/partyReview">우연 파티 후기</a></li>
           </ul>
@@ -55,7 +73,7 @@ export default function Header({blue_logo}){
           </button>
         </div>
         <div className={`mobile_menu ${mobileMenuView === true ? 'view' : ''}`}>
-          <Nav/>
+          <Nav type={'mobile'}/>
         </div>
       </header>
     </>

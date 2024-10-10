@@ -268,6 +268,7 @@ export default function ConsultRequest(){
       }
 
       const locationKor = locationList.filter(item => item.id === formData.location);
+      const educationKor = educationData.filter(item => item.id === formData.education);
 
       let ageRanges = [
         { min: 18, max: 21, range: '18-21' },
@@ -295,7 +296,7 @@ export default function ConsultRequest(){
         event: "generate_lead",
         ecommerce: {
         currency: 'KRW', // 통화 정보
-        value: 10000, // 리드 가치
+        value: 500000, // 리드 가치
         },
         branch: locationKor[0].name,
         counselor_gender: formData.conGender,
@@ -307,7 +308,7 @@ export default function ConsultRequest(){
         age: getAgeRange(age),
         gender: formData.gender === '남자' ? 'Male' : 'Female',
         region: formData.region,
-        education: formData.education,
+        education: educationKor[0].name,
         recommender: formData.recommender !== '' ? 'Y' : 'N',
       });
 

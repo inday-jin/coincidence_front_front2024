@@ -63,7 +63,7 @@ export default function Main(){
   
   return(
     <>
-      <Popup/>
+      {/* <Popup/> */}
       <main className="main_wrap">
         <div className="main_slide">
           <section className="main_slide">
@@ -85,10 +85,11 @@ export default function Main(){
               }}
               modules={[EffectFade, Autoplay, Pagination]}
               onSlideChangeTransitionEnd={(e) => {
+                let classTxt = document.getElementById('header').className;
                 if(e.realIndex === 0){
-                  document.getElementById('header').className = 'header tn blue_logo';
+                  document.getElementById('header').className = classTxt.replace('white_logo', 'blue_logo');
                 }else{
-                  document.getElementById('header').className = 'header tn white_logo';
+                  document.getElementById('header').className = classTxt.replace('blue_logo', 'white_logo');
                 }
               }}
             >
@@ -161,13 +162,6 @@ export default function Main(){
                 }}
 
                 modules={[Autoplay, Pagination, Navigation]}
-                onSlideChange={(e) => {
-                  if(e.realIndex === 0 || e.realIndex === 1){
-                    document.getElementById('header').className = 'header tn blue_logo';
-                  }else{
-                    document.getElementById('header').className = 'header tn white_logo';
-                  }
-                }}
                 breakpoints={{
                   320: {
                     slidesPerView: 1,
