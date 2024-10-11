@@ -988,14 +988,14 @@
   .popup_cont{padding: 60px 40px;background-color: #fff;
     p{white-space: pre-line;}
   }
-  .popup_ctrl{display: flex;justify-content: space-between;padding: 15px 40px;background-color: #35ADE3;
-    button{color: #fff;
-      img{vertical-align: middle;margin-bottom: 3px;}
-    }
+  .popup_ctrl{display: flex;padding: 15px 40px;background-color: #35ADE3;
+    button{display: block;width: 100%;color: #fff;text-align: center;}
   }
+  /*
   @include respond-to('d594'){
     position: absolute;display: block;
   }
+  */
   &::after{content: "";position: fixed;z-index: 3000;display: block;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(0, 0, 0, 0.5);}
 }
 

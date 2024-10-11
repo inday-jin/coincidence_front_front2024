@@ -324,8 +324,8 @@ export default function ConsultRequest(){
         education: formData.educationKor,
         recommender: formData.recommender !== '' ? 'Y' : 'N',
       });
-
-      navigate('/result');
+      window.location.href = '/result';
+      //navigate('/result');
     }else{}
   }
 
