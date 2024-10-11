@@ -32,6 +32,7 @@ export default function ConsultRequest(){
     gender: '남자',
     recommender: '',
     education: '',
+    educationKor: '',
     region: '서울특별시',
     agreePrivacy: '',
     agreeMarketing: '',
@@ -61,6 +62,15 @@ export default function ConsultRequest(){
 
   const [educationData, setEducationData] = useState([])
 
+  // 오늘 날짜
+  const nowDate = new Date();
+
+  const nowYY = nowDate.getFullYear();
+  const nowMM = nowDate.getMonth()+1;
+  const nowDD = nowDate.getDate();
+
+  const [today, setToday] = useState(`${nowYY}-${nowMM}-${nowDD}`);
+
   // submit 버튼 상태
   const [sbmBtnDisabled, setSbmBtnDisabled] = useState(true);
   
@@ -87,8 +97,11 @@ export default function ConsultRequest(){
     setFormData(prevFormData => ({
       ...prevFormData,
       location: locationResponse.data[0].id,
-      education: educationLst.data[0].id
+      education: educationLst.data[0].id,
+      educationKor: educationLst.data[0].name
     }));
+
+    
 
     if(window.kakaoPixel){
       await window.kakaoPixel('2665275622713308583').pageView();
@@ -179,6 +192,12 @@ export default function ConsultRequest(){
         phone: `${phoneN === 1 ? value : formData.phone1}-${phoneN === 2 ? value : formData.phone2}-${phoneN === 3 ? value : formData.phone3}`,
         [name]: value,
       });
+    }else if(name === 'education'){
+      setFormData({
+        ...formData,
+        educationKor: educationData[Number(value)-1].name,
+        [name]: value,
+      });
     }else if(name === 'agreePrivacy' || name === 'agreeMarketing'){
       setFormData(prevFormData => ({
         ...prevFormData,
@@ -196,17 +215,13 @@ export default function ConsultRequest(){
     // submit 버튼 활성화
     const findEmptyFields = (obj) => {
       return Object.entries(obj)
-        .filter(([key, value]) => value === "")
+        .filter(([key, value]) => value === "" && key !== "kakaoTalkId" && key !== "agreeMarketing" && key !== "recommender")
         .map(([key]) => key);
     };
     const emptyFields = findEmptyFields(formData);
-    if (emptyFields.length > 0) {
-      if(emptyFields.length === 1 && emptyFields.indexOf('recommender') !== -1){
-        setSbmBtnDisabled(false);
-      }else{
-        setSbmBtnDisabled(true);
-      }
-    } else {
+    if(emptyFields.length > 0){
+      setSbmBtnDisabled(true);
+    }else{
       setSbmBtnDisabled(false);
     }
   }, [formData]);
@@ -268,7 +283,6 @@ export default function ConsultRequest(){
       }
 
       const locationKor = locationList.filter(item => item.id === formData.location);
-      const educationKor = educationData.filter(item => item.id === formData.education);
 
       let ageRanges = [
         { min: 18, max: 21, range: '18-21' },
@@ -284,13 +298,12 @@ export default function ConsultRequest(){
         { min: 65, max: 69, range: '65-69' },
         { min: 70, max: 74, range: '70-74' }
       ];
-      const nowDate = new Date();
       const age = nowDate.getFullYear() - Number(formData.birth_year) +1;
       function getAgeRange(age) {
         const ageRange = ageRanges.find(range => age >= range.min && age <= range.max);
         return ageRange ? ageRange.range : 'Unknown range';
       }
-
+      
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         event: "generate_lead",
@@ -308,10 +321,9 @@ export default function ConsultRequest(){
         age: getAgeRange(age),
         gender: formData.gender === '남자' ? 'Male' : 'Female',
         region: formData.region,
-        education: educationKor[0].name,
+        education: formData.educationKor,
         recommender: formData.recommender !== '' ? 'Y' : 'N',
       });
-
 
       navigate('/result');
     }else{}
@@ -385,7 +397,7 @@ export default function ConsultRequest(){
               <div className="inp_item" ref={(el) => (elementsRef.current[4] = el)}>
                 <p className="t fz18 ffsd6 pb25">1순위 상담 일정</p>
                 <div className="date_inp_w">
-                  <input type="date" id="date1" min="2024-09-18" name="firstDate" className="inp inp_date" value={formData.firstDate} onChange={changeValue} />
+                  <input type="date" id="date1" min={today} name="firstDate" className="inp inp_date" value={formData.firstDate} onChange={changeValue} />
                   <select name="firstDateTime" className="inp_time" onChange={changeValue}>
                     <option>시간</option>
                     {reqTimeLst.map((time, i) =>{
@@ -399,7 +411,7 @@ export default function ConsultRequest(){
               <div className="inp_item" ref={(el) => (elementsRef.current[5] = el)}>
                 <p className="t fz18 ffsd6 pb25">2순위 상담 일정</p>
                 <div className="date_inp_w">
-                  <input type="date" id="date1" min="2024-09-18" name="secondDate" className="inp inp_date" value={formData.secondDate} onChange={changeValue} />
+                  <input type="date" id="date1" min={today} name="secondDate" className="inp inp_date" value={formData.secondDate} onChange={changeValue} />
                   <select name="secondDateTime" className="inp_time" onChange={changeValue}>
                     <option>시간</option>
                     {reqTimeLst.map((time, i) =>{
