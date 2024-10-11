@@ -27,15 +27,9 @@ import * as serviceWorker from "./serviceWorker";
 import reportWebVitals from "./reportWebVitals";
 
 function Layout({ children }) {
-  const blue_logo = children.type.name === 'Privacy' || 
-  children.type.name === 'ClaimProcedure' || 
-  children.type.name === 'MarriageTerms' || 
-  children.type.name === 'Terms' || 
-  children.type.name === 'ReviewView' || 
-  children.type.name === 'Result'
+  const blue_logo = [Privacy, ClaimProcedure, MarriageTerms, Terms, ReviewView, Result].includes(children.type);
 
   const location = useLocation();
-
   return (
     <>
       <Header blue_logo={blue_logo} />

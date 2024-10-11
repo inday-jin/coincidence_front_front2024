@@ -17,7 +17,12 @@ export default function PageTop({ topPath }) {
     coupleReview: '우연 커플 후기',
     partyReview: '우연 파티 후기',
     contact: '문의 정보',
-    consult: '상담신청'
+    consult: '상담신청',
+    terms: '이용약관',
+    privacy: '개인정보처리방침',
+    marriageTerms: '국내결혼중개 표준약관',
+    claimProcedure: '손해배상 청구절차',
+    result: '상담신청 완료',
   }
 
   useEffect(() => {
