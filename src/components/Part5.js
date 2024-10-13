@@ -51,7 +51,7 @@ export default function Part5(props){
                 <div className="txt">
                   <p className="t1 ffsd6">비싼비용</p>
                   <p className="t2 ffsd6">"한번 매칭에..40만원?"</p>
-                  <p className="t3">횟수제와 기간제의 불공정 계약을 대입해보니 <span className="pc_br"></span>한번 만남에 40-100만원 가량!?</p>
+                  <p className="t3">횟수제와 기간제의 불공정 계약을 대입해 보니 <span className="pc_br"></span>한번 만남에 40-100만원 가량!?</p>
                 </div>
               </div>
               <div className="box blue_type" ref={(el) => (elementsRef.current[3] = el)}>

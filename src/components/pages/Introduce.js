@@ -123,7 +123,7 @@ export default function Main(){
               <figure className="vdo mt40" ref={(el) => (elementsRef.current[6] = el)}>
               <iframe src="https://player.vimeo.com/video/1014234794?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;title=0&amp;byline=0&amp;portrait=0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write"></iframe>
               </figure>
-              <p className="t1 mt20" ref={(el) => (elementsRef.current[7] = el)}>여러분의 행복한 결혼 성사만을 바라기 위해 우연은 구독자 90만명을 보유한 연애분야 1위 유튜버 김달님께서 기획 및 개발에 함께 참여하였습니다.</p>
+              <p className="t1 mt20" ref={(el) => (elementsRef.current[7] = el)}>여러분의 행복한 결혼 성사만을 바라기 위해 우연은 구독자 90만 명을 보유한 연애 분야 1위 유튜버 김달님께서 기획 및 개발에 함께 참여하였습니다.</p>
             </div>
           </div>
         </section>

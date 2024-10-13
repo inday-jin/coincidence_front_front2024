@@ -76,7 +76,7 @@ export default function Part2(props){
                 <div className="txt">
                   <p className="t1 ffsd6">매니저 불일치</p>
                   <p className="t2 ffsd6">"나를 상담한 분이 나를 가장 잘 아는데<br/> 매칭은 왜, 다른 사람이 하죠?"</p>
-                  <p className="t3">상담 매니저와의 1시간 상담 결과가 매칭 매니저에게 전달 되는 건 고작 1-2줄! 횟수 차감 목적의 만남이 될 확률 존재</p>
+                  <p className="t3">상담 매니저와의 1시간 상담 결과가 매칭 매니저에게 전달되는 건 고작 1-2줄! 횟수 차감 목적의 만남이 될 확률 존재</p>
                 </div>
               </div>
               <div className="box blue_type" ref={(el) => (elementsRef.current[7] = el)}>

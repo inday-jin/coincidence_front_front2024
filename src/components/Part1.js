@@ -55,7 +55,7 @@ export default function Part1(props){
                 <div className="txt">
                   <p className="t1 ffsd6">성혼에는 관심없는 너</p>
                   <p className="t2 ffsd6">결정사 평균 성혼율 3%, 나는 솔로 성혼률 5%</p>
-                  <p className="t3">정작 중요한 결혼에는 관심없고 매칭 통한 상대방 횟수 차감에 목적</p>
+                  <p className="t3">정작 중요한 결혼에는 관심 없고 매칭 통한 상대방 횟수 차감에 목적</p>
                 </div>
               </div>
               <div className="box blue_type" ref={(el) => (elementsRef.current[4] = el)}>
@@ -75,7 +75,7 @@ export default function Part1(props){
                 <div className="txt">
                   <p className="t1 ffsd6">진정성 없는 만남</p>
                   <p className="t2 ffsd6">차감, 미차감 시스템</p>
-                  <p className="t3">미차감 만남을 권유하는 등 <span className="pc_br"></span>횟수 차감 목적의 만남이나 한 쪽이 <span className="pc_br"></span>심리적 우위에 있을 수 밖에 없는 <span className="pc_br"></span>특정 직군 우대 시스템</p>
+                  <p className="t3">미차감 만남을 권유하는 등 <span className="pc_br"></span>횟수 차감 목적의 만남이나 한 쪽이 <span className="pc_br"></span>심리적 우위에 있을 수밖에 없는 <span className="pc_br"></span>특정 직군 우대 시스템</p>
                 </div>
               </div>
               <div className="box blue_type" ref={(el) => (elementsRef.current[6] = el)}>

@@ -48,7 +48,7 @@ export default function Process(){
             <p className="step fz20 ffsd6">STEP. 01</p>
             <div className="txt">
               <p className="t1 fz30 ffsd6">상담신청</p>
-              <p className="t2 fz18">원하시는 상담 일자와 선호하시는 상담사 성별을 선택해주세요.</p>
+              <p className="t2 fz18">원하시는 상담 일자와 선호하시는 상담사 성별을 선택해 주세요.</p>
               <p className="t2 fz18">상담 신청은 확정이 아니에요! 예약 부서에서 순차로 연락드린 후 예약이 확정됩니다.</p>
               <a href="/consult/request" className="fz18 ffsd6">상담 신청하러 가기</a>
             </div>
@@ -60,7 +60,7 @@ export default function Process(){
               <p className="t1 fz30 ffsd6">대면 상담</p>
               <p className="t2 fz18">배정된 담당 매니저님과 직접 대면하여 꼼꼼하고 진솔한 상담을 하게 됩니다!</p>
               <p className="t2 fz18">원하시는 이상형과 자신의 가치관, 스타일에 대해 많은 이야기를 해주시는 것이 가장 좋습니다.</p>
-              <p className="t2 fz18">평균 연령 30대의 전문 매니저는 우연의 자랑! 마음 편히 상담 받으세요.</p>
+              <p className="t2 fz18">평균 연령 30대의 전문 매니저는 우연의 자랑! 마음 편히 상담받으세요.</p>
             </div>
           </div>
           <div className="item" ref={(el) => (elementsRef.current[4] = el)}>
@@ -69,7 +69,7 @@ export default function Process(){
             <div className="txt">
               <p className="t1 fz30 ffsd6">상담 후 결제</p>
               <p className="t2 fz18">우연과 함께 인연을 만들겠다는 결정을 하셨나요?</p>
-              <p className="t2 fz18">상담 시 상세히 안내 받은 대로 가입서 작성 및 결제를 진행하게 됩니다.</p>
+              <p className="t2 fz18">상담 시 상세히 안내받은 대로 가입서 작성 및 결제를 진행하게 됩니다.</p>
               <a href="/consult/request" className="fz18 ffsd6">상담 신청하러 가기</a>
             </div>
           </div>
@@ -97,7 +97,7 @@ export default function Process(){
             <p className="step fz20 ffsd6">STEP. 05</p>
             <div className="txt">
               <p className="t1 fz30 ffsd6">최종 승인</p>
-              <p className="t2 fz18">정성스레 제출 해 주신 인증 서류와 프로필 정보를 면밀히 검토 후 승인이 완료됩니다!</p>
+              <p className="t2 fz18">정성스레 제출해 주신 인증 서류와 프로필 정보를 면밀히 검토 후 승인이 완료됩니다!</p>
               <p className="t2 fz18">우연과 함께 인연 만들기 준비가 완료되었습니다.</p>
             </div>
           </div>
@@ -126,7 +126,7 @@ export default function Process(){
             <div className="txt">
               <p className="t1 fz30 ffsd6">우리의 인연</p>
               <p className="t2 fz18">내게 꼭 맞는 인연을 만나셨다면 이제 예쁜 사랑을 키워나가세요!</p>
-              <p className="t2 fz18">우연은 언제나 회원님들의 사랑을 응원 합니다.</p>
+              <p className="t2 fz18">우연은 언제나 회원님들의 사랑을 응원합니다.</p>
             </div>
           </div>
         </div>

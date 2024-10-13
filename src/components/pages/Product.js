@@ -62,7 +62,7 @@ export default function Products(){
     <>
       <div className="inday_container pb120">
         <h2 className="main_tit fz50 ffsd6 pb40 pt120 tac" ref={(el) => (elementsRef.current[0] = el)}><span className="mark_bg">우연 기간제 멤버십</span></h2>
-        <p className="tac fz22 c3 pb80" ref={(el) => (elementsRef.current[1] = el)}>기간제 서비스는 <span className="c1 ffsd6">기간 내 횟수 제한 없이 만남이 가능</span>한 서비스 입니다.<br/>계약 기간 동안 매니저님과 원활히 소통하여 평생 인연 찾으시기 바랍니다.<br/>*우연은 공정거래위원회 국내결혼 표준 약관을 100% 준수합니다.</p>
+        <p className="tac fz22 c3 pb80" ref={(el) => (elementsRef.current[1] = el)}>기간제 서비스는 <span className="c1 ffsd6">기간 내 횟수 제한 없이 만남이 가능</span>한서비스 입니다.<br/>계약 기간 동안 매니저님과 원활히 소통하여 평생 인연 찾으시기 바랍니다.<br/>*우연은 공정거래위원회 국내 결혼 표준 약관을 100% 준수합니다.</p>
         <div className="product_lst subscribe">
           {prodData[0].map((item, i) => {
             const match = item.desc.match(/\[(.*?)\]/);

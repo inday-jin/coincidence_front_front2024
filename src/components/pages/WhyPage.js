@@ -51,7 +51,7 @@ export default function Whypage(path){
             <span>비싼 비용을 냈는데</span>
             <span className="point">왜 내가 원하는 이성을 소개해주지 않을까?</span>
           </h3>
-          <p className="ffsb fz22 ffsbr" ref={(el) => (elementsRef.current[1] = el)}>상담 시에는 모든 조건을 다 맞춰줄 것 처럼 하더니, 정작 매칭은 내 니즈에 맞지 않거나 진정성 없는 만남만 이루어졌었습니다.<br/>진짜 인연은 만나지 못하고 시간과 돈만 낭비되는 것을 느끼며 <span className="ffsbb">"이들은 내 결혼에 관심이 없구나"</span> 란 생각이 들었습니다.<br/>결혼을 인생의 숙제가 아닌 축제로 만들기 위해, 진짜 결정사다운 결정사를 만들자고 다짐했습니다.</p>
+          <p className="ffsb fz22 ffsbr" ref={(el) => (elementsRef.current[1] = el)}>상담 시에는 모든 조건을 다 맞춰줄 것처럼 하더니, 정작 매칭은 내 니즈에 맞지 않거나 진정성 없는 만남만 이루어졌었습니다.<br/>진짜 인연은 만나지 못하고 시간과 돈만 낭비되는 것을 느끼며 <span className="ffsbb">"이들은 내 결혼에 관심이 없구나"</span> 란 생각이 들었습니다.<br/>결혼을 인생의 숙제가 아닌 축제로 만들기 위해, 진짜 결정사 다운 결정사를 만들자고 다짐했습니다.</p>
         </section>
       </div>
       <Part1 main={false} />
@@ -71,7 +71,7 @@ export default function Whypage(path){
             <span>대형 결정사여서 인증 받기가 까다로울 줄 알았는데</span>
             <span className="point">의외로 너무 간단하거나 자산인증을 아예 안해서 놀랐어요</span>
           </h3>
-          <p className="ffsb fz22 ffsbr" ref={(el) => (elementsRef.current[5] = el)}>내가 말하는 대로만 적고, 사실 여부는 확인 하지 않은채 오로지 규약서에만 의지한 인증을 거치면서 과연 이 인증이 철저하고 제대로 된 인증이었을까, <span className="pc_br"></span>관계가 깊어 졌을때 오해가 생겨 관계가 틀어지진 않을까 하는 걱정이 들었습니다.<br/>그래서 법무 법인을 통한 철저한 자산 인증 시스템을 구축 했습니다.</p>
+          <p className="ffsb fz22 ffsbr" ref={(el) => (elementsRef.current[5] = el)}>내가 말하는 대로만 적고, 사실 여부는 확인하지 않은 채 오로지 규약서에만 의지한 인증을 거치면서 과연 이 인증이 철저하고 제대로 된 인증이었을까, <span className="pc_br"></span>관계가 깊어졌을 때 오해가 생겨 관계가 틀어지진 않을까 하는 걱정이 들었습니다.<br/>그래서 법무 법인을 통한 철저한 자산 인증 시스템을 구축했습니다.</p>
         </section>
       </div>
       <Part3 main={false}/>
@@ -166,7 +166,7 @@ export default function Whypage(path){
             <span>회원의 매력을</span>
             <span className="point">100% 뽑아드립니다.</span>
           </h3>
-          <p className="ffsb fz22 ffsbr" ref={(el) => (elementsRef.current[24] = el)}><span className="c1 ffsbb">매력을 살려주는 전문 작가의 자연스러운 야외 촬영 사진매력적인 프로필 사진은 아주 중요 합니다.</span><br/>혹시 본인의 매력을 어필 할 수 있는 사진이 부족하다면 우연의 스냅사진 서비스를 이용해보시는 건 어떠신가요?<br/>우연의 전속 계약 작가님이 과한 보정 없이, 자연스러운 회원님만의 매력이 담긴 사진을 제공해 드립니다.</p>
+          <p className="ffsb fz22 ffsbr" ref={(el) => (elementsRef.current[24] = el)}><span className="c1 ffsbb">매력을 살려주는 전문 작가의 자연스러운 야외 촬영 사진 매력적인 프로필 사진은 아주 중요합니다.</span><br/>혹시 본인의 매력을 어필할 수 있는 사진이 부족하다면 우연의 스냅사진 서비스를 이용해 보시는 건 어떠신가요?<br/>우연의 전속 계약 작가님이 과한 보정 없이, 자연스러운 회원님만의 매력이 담긴 사진을 제공해 드립니다.</p>
         </section>
       </div>
       <section className="part_wrap part_photo">
