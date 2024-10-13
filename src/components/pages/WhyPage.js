@@ -51,7 +51,7 @@ export default function Whypage(path){
             <span>비싼 비용을 냈는데</span>
             <span className="point">왜 내가 원하는 이성을 소개해주지 않을까?</span>
           </h3>
-          <p className="ffsb fz22 ffsbr" ref={(el) => (elementsRef.current[1] = el)}>상담 시에는 모든 조건을 다 맞춰줄 것 처럼 하더니, 정작 매칭은 내 니즈에 맞지 않거나 진정성 없는 만남만 이루어졌었습니다.<br/>진짜 인연은 만나지 못하고 시간과 돈만 낭비되는 것을 느끼며 <span className="ffsbb">"이들은 내 결혼에 관심이 없구나"</span> 란 생각이 들었습니다.<br/>결혼을 인생의 숙제가 아닌 축제로 만들기 위해, 진짜 결정사다운 결장사를 만들자고 다짐했습니다.</p>
+          <p className="ffsb fz22 ffsbr" ref={(el) => (elementsRef.current[1] = el)}>상담 시에는 모든 조건을 다 맞춰줄 것 처럼 하더니, 정작 매칭은 내 니즈에 맞지 않거나 진정성 없는 만남만 이루어졌었습니다.<br/>진짜 인연은 만나지 못하고 시간과 돈만 낭비되는 것을 느끼며 <span className="ffsbb">"이들은 내 결혼에 관심이 없구나"</span> 란 생각이 들었습니다.<br/>결혼을 인생의 숙제가 아닌 축제로 만들기 위해, 진짜 결정사다운 결정사를 만들자고 다짐했습니다.</p>
         </section>
       </div>
       <Part1 main={false} />
