@@ -21,7 +21,7 @@ import MarriageTerms from './components/pages/MarriageTerms';
 import ClaimProcedure from './components/pages/ClaimProcedure';
 
 import NotFound from './components/pages/NotFound';
-
+import RedirectToExternal from './components/pages/RedirectPage';
 import "./assets/scss/layout.scss";
 import * as serviceWorker from "./serviceWorker";
 import reportWebVitals from "./reportWebVitals";
@@ -70,6 +70,21 @@ function App() {
         <Route path="/privacy" element={<Layout><Privacy /></Layout>} />
         <Route path="/marriageTerms" element={<Layout><MarriageTerms /></Layout>} />
         <Route path="/claimProcedure" element={<Layout><ClaimProcedure /></Layout>} />
+        {/* 리다이렉트 페이지들 */}
+        <Route path="/purchase/:id?/:uuid?" element={<Layout><RedirectToExternal /></Layout>} />
+        <Route path="/purchasewait" element={<Layout><RedirectToExternal /></Layout>} />
+        <Route path="/privacy/detail" element={<Layout><RedirectToExternal /></Layout>} />
+        <Route path="/marketing/detail" element={<Layout><RedirectToExternal /></Layout>} />
+        <Route path="/my/profile/:id?" element={<Layout><RedirectToExternal /></Layout>} />
+        <Route path="/my/profile/detail/:id/:birth?" element={<Layout><RedirectToExternal /></Layout>} />
+        <Route path="/introduce/user/:id?" element={<Layout><RedirectToExternal /></Layout>} />
+        <Route path="/introduce/detail/:id/:birth?" element={<Layout><RedirectToExternal /></Layout>} />
+        <Route path="/like/user/:id?" element={<Layout><RedirectToExternal /></Layout>} />
+        <Route path="/like/detail/:id/:birth?" element={<Layout><RedirectToExternal /></Layout>} />
+        <Route path="/like/user/profile/:id/:birth?" element={<Layout><RedirectToExternal /></Layout>} />
+        <Route path="/like/user/profile/:id?" element={<Layout><RedirectToExternal /></Layout>} />
+        <Route path="/image" element={<Layout><RedirectToExternal /></Layout>} />
+        <Route path="/register" element={<Layout><RedirectToExternal /></Layout>} />
 
         <Route path="*" element={<Layout><NotFound /></Layout>} />
       </Routes>
