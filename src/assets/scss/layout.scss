@@ -210,8 +210,22 @@
   }
   .inp{width: 100%;height: 60px;border: 1px solid #ddd;border-radius: 5px;}
   .inp_line_block{display: block;
-    .t{
+    .t{position: relative;
       .c1{color: #166EE2;}
+      button{position: absolute;right: 0;
+        &::after{content: '';display: block;
+          position: absolute;
+          left: calc(50% - 30px);
+          bottom: -20px;
+          z-index: 10;
+          width: 20px;
+          height: 20px;
+          background-image: url('../img/why_part_ico.svg');
+          background-repeat: no-repeat;
+          background-position: 50%;
+          background-color: #fff;
+      }
+      }
     }
     .region_area{
       label{display: inline-block;margin-left: 0;margin-bottom: 5px;margin-right: 5px;}
@@ -227,11 +241,17 @@
     input:checked ~ i::after{background-color: #35ADE3;transform: scale(0.5,0.5) rotate(0.3deg);-webkit-transform: scale(0.5,0.5) rotate(0.3deg);transform: scale(0.5,0.5) rotate(0.3deg);}
     input:disabled ~ i{background-color: #eee;}
   }
-  .sbm_btn{
-    button{display: block;width: 245px;height: 60px;margin: 0 auto;text-align: center;color: #fff;background-color: #35ADE3;border-radius: 40px;
-      &:disabled{background-color: #ddd;cursor: auto;}
+  .btn_pos{position: fixed;bottom: 20px;left: 0;width: 100%;
+    .sbm_btn{
+      button{display: block;width: 245px;height: 60px;margin: 0 auto;text-align: center;color: #fff;background-color: #35ADE3;border-radius: 40px;
+        &:disabled{background-color: #ddd;cursor: auto;}
+      }
+      .sbm{display: block;width: 245px;height: 60px;margin: 0 auto;text-align: center;color: #fff;background-color: #ddd;border-radius: 40px;line-height: 60px;
+        &::after{content: '신청하기';}
+      }
     }
   }
+  
   @include respond-to('d960'){
     padding: 20px;
   }

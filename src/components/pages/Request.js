@@ -1,5 +1,4 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { getData, postData } from "../script/api";
 import AgreePrivacy from '../AgreePrivacy';
 import AgreeMarketing from '../AgreeMarketing';
@@ -13,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 export default function ConsultRequest(){
-  const navigate = useNavigate();
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const [formData, setFormData] = useState({
     location: '',
@@ -36,11 +35,33 @@ export default function ConsultRequest(){
     region: '서울특별시',
     agreePrivacy: '',
     agreeMarketing: '',
+    subPath: '김달',
+    subPathInp: '',
   });
 
   const genderLst = ["남자", "여자", "무관"];
   const reqTimeLst = ['10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'];
   const regionLst = ["서울특별시", "인천/경기", "대구/경북", "부산/울산/경남", "대전/세종/충청", "광주/전라", "강원/제주"];
+  const subPathLst = ["김달", "블라인드", "네이버", "인스타그램", "배너 광고", "네이버카페", "지인", "기타"];
+  const reqKorMsg = [
+    {name: 'location', txt: '지사'},
+    {name: 'conGender', txt: '희망상담사 성별'},
+    {name: 'firstDate', txt: '1순위 상담 일정'},
+    {name: 'firstDateTime', txt: '1순위 상담 시간'},
+    {name: 'secondDate', txt: '2순위 상담 일정'},
+    {name: 'secondDateTime', txt: '2순위 상담 시간'},
+    {name: 'name', txt: '성함'},
+    {name: 'phone1', txt: '연락처'},
+    {name: 'phone2', txt: '연락처'},
+    {name: 'phone3', txt: '연락처'},
+    {name: 'birth_year', txt: '출생년도'},
+    {name: 'gender', txt: '성별'},
+    {name: 'region', txt: '거주 지역'},
+    {name: 'education', txt: '최종학력'},
+    {name: 'subPath', txt: '가입 경로'},
+    {name: 'subPathInp', txt: '가입 경로'},
+    {name: 'agreePrivacy', txt: '개인정보 수집 및 이용 동의'},
+  ];
 
   // 지사
   const [locationList, setLocationList] = useState([]);
@@ -71,6 +92,15 @@ export default function ConsultRequest(){
 
   const [today, setToday] = useState(`${nowYY}-${nowMM}-${nowDD}`);
 
+  const [subPathInpView, setSubPathInpView] = useState(false);
+
+
+  const [reqCheckMsg, setReqCheckMsg] = useState('');
+
+  // 개인정보처리방침, 마케팅 활용 열기 닫기
+  const [openPrivacy, setOpenPrivacy] = useState(false);
+  const [openMarketing, setOpenMarketing] = useState(false);
+
   // submit 버튼 상태
   const [sbmBtnDisabled, setSbmBtnDisabled] = useState(true);
   
@@ -89,6 +119,8 @@ export default function ConsultRequest(){
     // 신청 불가 일정 데이터
     const dateResponse = await getData(`/api/counseling/date/busy`);
     setNoSelDate(dateResponse.data.dates);
+
+    
 
     // 최종학력
     const educationLst = await getData(`/api/education/list`);
@@ -114,6 +146,7 @@ export default function ConsultRequest(){
     // 알림 메세지 닫기
     setAlertMsg('');
   }
+
 
   async function changeValue(e){
     // 값 입력
@@ -203,6 +236,18 @@ export default function ConsultRequest(){
         ...prevFormData,
         [name]: checked ? 'true' : '',
       }));
+    }else if(name === 'subPath'){
+      // 가입경로 기타 선택할 경우 입력란 활성화
+      setFormData({
+        ...formData,
+        [name]: value,
+        subPathInp: '',
+      });
+      if(value === '기타'){
+        setSubPathInpView(true);
+      }else{
+        setSubPathInpView(false);
+      }
     }else{
       setFormData({
         ...formData,
@@ -211,6 +256,11 @@ export default function ConsultRequest(){
     }
   }
   
+  async function reqCheck(){
+    setAlertMsg(reqCheckMsg);
+    //alert(reqCheckMsg)
+  }
+
   const checkEmptyFields = useCallback(() => {
     // submit 버튼 활성화
     const findEmptyFields = (obj) => {
@@ -219,8 +269,30 @@ export default function ConsultRequest(){
         .map(([key]) => key);
     };
     const emptyFields = findEmptyFields(formData);
+    
+    const missingTexts = Array.from(new Set(
+      emptyFields.map(field => {
+        if (field === 'subPathInp' && formData.subPath !== '기타') {
+          return null;
+        }
+        const match = reqKorMsg.find(item => item.name === field);
+        return match ? match.txt : null;
+      }).filter(txt => txt !== null)
+    ));
+    
+    const uniqueTexts = missingTexts.filter((txt, index, self) =>
+      !(['연락처', '가입 경로'].includes(txt) && self.indexOf(txt) !== index)
+    );
+
+    setReqCheckMsg(`${uniqueTexts.join(', ')}를 입력해주세요.`)
+
+
     if(emptyFields.length > 0){
-      setSbmBtnDisabled(true);
+      if(emptyFields.length === 1 && formData.subPath !== '기타'){
+        setSbmBtnDisabled(false);  
+      }else{
+        setSbmBtnDisabled(true);
+      }
     }else{
       setSbmBtnDisabled(false);
     }
@@ -250,6 +322,7 @@ export default function ConsultRequest(){
       privacy_agree: formData.agreePrivacy ? true : false,
       region: formData.region,
       kakaoTalkId: formData.kakaoTalkId,
+      subPath: formData.subPath !== '기타' ? formData.subPath : `${formData.subPath} ${formData.subPathInp}`,
     };
     const uploadData = await postData(`/api/counseling/request`, body);
     if(uploadData.data === 'success'){
@@ -323,6 +396,7 @@ export default function ConsultRequest(){
         region: formData.region,
         education: formData.educationKor,
         recommender: formData.recommender !== '' ? 'Y' : 'N',
+        subPath: formData.subPath !== '기타' ? formData.subPath : `${formData.subPath} ${formData.subPathInp}`,
       });
       window.location.href = '/result';
       //navigate('/result');
@@ -354,6 +428,21 @@ export default function ConsultRequest(){
   }, [getOptData]);
 
   useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    // 이벤트 리스너 등록
+    window.addEventListener('resize', handleResize);
+
+    // 컴포넌트 언마운트 시 이벤트 리스너 제거 (클린업)
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [])
+
+
+  useEffect(() => {
     checkEmptyFields();
   }, [checkEmptyFields]);
   
@@ -367,35 +456,63 @@ export default function ConsultRequest(){
       <form onSubmit={sbm}>
         <div className="inday_container request_page pb120">
           <h3 className="fz40 ffsd6 tac pt120 pb50" ref={(el) => (elementsRef.current[0] = el)}>원하시는 일정에 맞춰 간편하게 상담 예약하세요.</h3>
-          <p className="fz22 c3 tac pb80" ref={(el) => (elementsRef.current[1] = el)}>수도권 회원의 경우 전화 상담은 불가하고 방문 상담만 가능하며, 평일뿐만 아니라 주말, 공휴일도 상담 예약 가능합니다.</p>
+          <p className="fz22 c3 tac pb80" ref={(el) => (elementsRef.current[1] = el)}>수도권 회원의 경우 전화 상담은 불가하고 방문 상담만 가능하며, 평일뿐만 아니라 주말, 공휴일도 상담 예약 가능합니다.<br/>한국 국적이 아니신 분들은 상담 및 가입이 불가하오니 양해 바랍니다.</p>
           <div className="request_inp_box">
             <div className="inp_line pb40">
               <div className="inp_item" ref={(el) => (elementsRef.current[2] = el)}>
-                <p className="t fz18 ffsd6 pb25">지사</p>
-                {locationList.map((item, i) => {
-                  return(
-                  <label htmlFor={`location${i}`} className="check_label fz16" key={i}>
-                    <input type="radio" id={`location${i}`} checked={formData.location === item.id} value={item.id} name="location" onChange={changeValue} />
-                    <div className="c">{item.name}</div>
-                  </label>
-                  )
-                })}
+                <p className="t fz18 ffsd6 pb25">지사 <span className="star fz14 c1">*</span></p>
+                {windowWidth > 767 ?
+                  <>
+                    {locationList.map((item, i) => {
+                      return(
+                      <label htmlFor={`location${i}`} className="check_label fz16" key={i}>
+                        <input type="radio" id={`location${i}`} checked={formData.location === item.id} value={item.id} name="location" onChange={changeValue} />
+                        <div className="c">{item.name}</div>
+                      </label>
+                      )
+                    })}
+                  </>
+                  :
+                  <>
+                    <select className="inp" name="location" value={formData.location} onChange={changeValue}>
+                      {locationList.map((item, i) => {
+                        return(
+                        <option value={item.id} key={i}>{item.name}</option>
+                        )
+                      })}
+                    </select>
+                  </>
+                }
               </div>
               <div className="inp_item" ref={(el) => (elementsRef.current[3] = el)}>
-                <p className="t fz18 ffsd6 pb25">희망상담사 성별</p>
-                {genderLst.map((item, i) => {
-                  return(
-                    <label htmlFor={`counselor_gender${i}`} className="check_label fz16" key={i}>
-                      <input type="radio" id={`counselor_gender${i}`} checked={formData.conGender === item} value={item} name="conGender" onChange={changeValue} />
-                      <div className="c">{item}</div>
-                    </label>
-                  )
-                })}
+                <p className="t fz18 ffsd6 pb25">희망상담사 성별 <span className="star fz14 c1">*</span></p>
+                {windowWidth > 767 ?
+                  <>
+                    {genderLst.map((item, i) => {
+                      return(
+                        <label htmlFor={`counselor_gender${i}`} className="check_label fz16" key={i}>
+                          <input type="radio" id={`counselor_gender${i}`} checked={formData.conGender === item} value={item} name="conGender" onChange={changeValue} />
+                          <div className="c">{item}</div>
+                        </label>
+                      )
+                    })}
+                  </>
+                  :
+                  <>
+                    <select className="inp" name="conGender" value={formData.conGender} onChange={changeValue}>
+                      {genderLst.map((item, i) => {
+                        return(
+                        <option value={item} key={i}>{item}</option>
+                        )
+                      })}
+                    </select>
+                  </>
+                }
               </div>
             </div>
             <div className="inp_line pb40">
               <div className="inp_item" ref={(el) => (elementsRef.current[4] = el)}>
-                <p className="t fz18 ffsd6 pb25">1순위 상담 일정</p>
+                <p className="t fz18 ffsd6 pb25">1순위 상담 일정 <span className="star fz14 c1">*</span></p>
                 <div className="date_inp_w">
                   <input type="date" id="date1" min={today} name="firstDate" className="inp inp_date" value={formData.firstDate} onChange={changeValue} />
                   <select name="firstDateTime" className="inp_time" onChange={changeValue}>
@@ -409,7 +526,7 @@ export default function ConsultRequest(){
                 </div>
               </div>
               <div className="inp_item" ref={(el) => (elementsRef.current[5] = el)}>
-                <p className="t fz18 ffsd6 pb25">2순위 상담 일정</p>
+                <p className="t fz18 ffsd6 pb25">2순위 상담 일정 <span className="star fz14 c1">*</span></p>
                 <div className="date_inp_w">
                   <input type="date" id="date1" min={today} name="secondDate" className="inp inp_date" value={formData.secondDate} onChange={changeValue} />
                   <select name="secondDateTime" className="inp_time" onChange={changeValue}>
@@ -425,11 +542,11 @@ export default function ConsultRequest(){
             </div>
             <div className="inp_line pb40">
               <div className="inp_item" ref={(el) => (elementsRef.current[6] = el)}>
-                <p className="t fz18 ffsd6 pb25">성함</p>
+                <p className="t fz18 ffsd6 pb25">성함 <span className="star fz14 c1">*</span></p>
                   <input type="text" className="inp"name="name" value={formData.name} onChange={changeValue} />
               </div>
               <div className="inp_item" ref={(el) => (elementsRef.current[7] = el)}>
-                <p className="t fz18 ffsd6 pb25">연락처</p>
+                <p className="t fz18 ffsd6 pb25">연락처 <span className="star fz14 c1">*</span></p>
                 <div className="tel_inp_w">
                   <input type="text" className="inp" name="phone1" onChange={changeValue} maxLength="3" />
                   <input type="text" className="inp" name="phone2" onChange={changeValue} maxLength="4" />
@@ -439,7 +556,7 @@ export default function ConsultRequest(){
             </div>
             <div className="inp_line pb40">
               <div className="inp_item" ref={(el) => (elementsRef.current[8] = el)}>
-                <p className="t fz18 ffsd6 pb25">출생년도</p>
+                <p className="t fz18 ffsd6 pb25">출생년도 <span className="star fz14 c1">*</span></p>
                   <select className="inp" name="birth_year" onChange={changeValue}>
                     <option>출생년도를 선택해 주세요.</option>
                     {birthYyLst.map((item,i) =>{
@@ -450,44 +567,121 @@ export default function ConsultRequest(){
                   </select>
               </div>
               <div className="inp_item" ref={(el) => (elementsRef.current[9] = el)}>
-                <p className="t fz18 ffsd6 pb25">성별</p>
-                {genderLst.map((item, i) => {
-                  if(item !== '무관'){
-                    return(
-                      <label htmlFor={`gender${i}`} className="check_label fz16" key={i}>
-                        <input type="radio" id={`gender${i}`} name="gender" checked={formData.gender === item} value={item} onChange={changeValue} />
-                        <div className="c">{item}</div>
-                      </label>
-                    )
-                  }
-                  return null;
-                })}
+                <p className="t fz18 ffsd6 pb25">성별 <span className="star fz14 c1">*</span></p>
+                {windowWidth > 767 ?
+                  <>
+                    {genderLst.map((item, i) => {
+                      if(item !== '무관'){
+                        return(
+                          <label htmlFor={`gender${i}`} className="check_label fz16" key={i}>
+                            <input type="radio" id={`gender${i}`} name="gender" checked={formData.gender === item} value={item} onChange={changeValue} />
+                            <div className="c">{item}</div>
+                          </label>
+                        )
+                      }
+                      return null;
+                    })}
+                  </>
+                :
+                  <>
+                    <select className="inp" name="gender" value={formData.gender} onChange={changeValue}>
+                      {genderLst.map((item, i) => {
+                        if(item !== '무관'){
+                          return(
+                          <option value={item} key={i}>{item}</option>
+                          )
+                        }
+                        return null;
+                      })}
+                    </select>
+                  </>
+                }
               </div>
             </div>
             <div className="inp_line_block pb40" ref={(el) => (elementsRef.current[10] = el)}>
-              <p className="t fz18 ffsd6 pb25">거주 지역</p>
+              <p className="t fz18 ffsd6 pb25">거주 지역 <span className="star fz14 c1">*</span></p>
               <div className="region_area">
-                {regionLst.map((item, i) => {
-                  return(
-                    <label htmlFor={`region${i}`} className="check_label fz16" key={i}>
-                      <input type="radio" id={`region${i}`} name="region" checked={formData.region === item} value={item} onChange={changeValue} />
-                      <div className="c">{item}</div>
-                    </label>
-                  )
-                })}
+                {windowWidth > 767 ?
+                  <>
+                    {regionLst.map((item, i) => {
+                      return(
+                        <label htmlFor={`region${i}`} className="check_label fz16" key={i}>
+                          <input type="radio" id={`region${i}`} name="region" checked={formData.region === item} value={item} onChange={changeValue} />
+                          <div className="c">{item}</div>
+                        </label>
+                      )
+                    })}
+                  </>
+                :
+                  <>
+                    <select className="inp" name="region" value={formData.region} onChange={changeValue}>
+                      {regionLst.map((item, i) => {
+                        return(
+                          <option value={item} key={i}>{item}</option>
+                        )
+                      })}
+                    </select>
+                  </>
+                }
               </div>
             </div>
             <div className="inp_line_block pb40" ref={(el) => (elementsRef.current[11] = el)}>
-              <p className="t fz18 ffsd6 pb25">최종학력</p>
+              <p className="t fz18 ffsd6 pb25">최종학력 <span className="star fz14 c1">*</span></p>
               <div className="region_area">
-                {educationData.map((item, i) => {
-                  return(
-                    <label htmlFor={`education${i}`} className="check_label fz16" key={i}>
-                      <input type="radio" id={`education${i}`} name="education" checked={Number(formData.education) === Number(item.id)} value={item.id} onChange={changeValue} />
-                      <div className="c">{item.name}</div>
-                    </label>
-                  )
-                })}
+                {windowWidth > 767 ?
+                  <>
+                    {educationData.map((item, i) => {
+                      return(
+                        <label htmlFor={`education${i}`} className="check_label fz16" key={i}>
+                          <input type="radio" id={`education${i}`} name="education" checked={Number(formData.education) === Number(item.id)} value={item.id} onChange={changeValue} />
+                          <div className="c">{item.name}</div>
+                        </label>
+                      )
+                    })}
+                  </>
+                :
+                  <>
+                    <select className="inp" name="education" value={formData.education} onChange={changeValue}>
+                      {educationData.map((item, i) => {
+                        return(
+                          <option value={item.id} key={i}>{item.name}</option>
+                        )
+                      })}
+                    </select>
+                  </>
+                }
+              </div>
+            </div>
+            <div className="inp_line_block pb40" ref={(el) => (elementsRef.current[17] = el)}>
+              <p className="t fz18 ffsd6 pb25">가입 경로 <span className="star fz14 c1">*</span></p>
+              <div className="region_area">
+                {windowWidth > 767 ?
+                  <>
+                    {subPathLst.map((item, i) => {
+                      return(
+                        <label htmlFor={`subPath${i}`} className="check_label fz16" key={i}>
+                          <input type="radio" id={`subPath${i}`} name="subPath" checked={formData.subPath === item} value={item} onChange={changeValue} />
+                          <div className="c">{item}</div>
+                        </label>
+                      )
+                    })}
+                  </>
+                :
+                  <>
+                    <select className="inp" name="subPath" value={formData.subPath} onChange={changeValue}>
+                      {subPathLst.map((item, i) => {
+                        return(
+                          <option value={item.id} key={i}>{item}</option>
+                        )
+                      })}
+                    </select>
+                  </>
+                }
+                {subPathInpView === true ?
+                  <><input type="text" className="inp" name="subPathInp" value={formData.subPathInp} onChange={changeValue} placeholder="가입 경로를 입력해 주세요." /></>
+                  :
+                  <></>
+                }
               </div>
             </div>
             
@@ -503,10 +697,14 @@ export default function ConsultRequest(){
               </div>
             </div>
             <div className="inp_line_block pb40" ref={(el) => (elementsRef.current[14] = el)}>
-              <p className="t fz18 ffsd6 pb25"><span className="ffsd4 c1">(필수)</span> 개인정보 수집 및 이용</p>
-              <div className="agree_txt">
-                <AgreePrivacy/>
-              </div>
+              <p className="t fz18 ffsd6 pb25"><span className="ffsd4 c1">(필수)</span> 개인정보 수집 및 이용<button type="button" className="agree_open_btn" onClick={e => setOpenPrivacy(!openPrivacy)}></button></p>
+              {openPrivacy ?
+                <div className="agree_txt">
+                  <AgreePrivacy/>
+                </div>
+              :
+                <></>
+              }
               <div className="agree_check">
                 <label htmlFor="agree1" className="fz16 c3">
                   <input type="checkbox" id="agree1" name="agreePrivacy" value={formData.agreePrivacy} checked={formData.agreePrivacy === 'true'} onChange={changeValue} />
@@ -515,10 +713,14 @@ export default function ConsultRequest(){
               </div>
             </div>
             <div className="inp_line_block pb40" ref={(el) => (elementsRef.current[15] = el)}>
-              <p className="t fz18 ffsd6 pb25"><span className="ffsd4 c9">(선택)</span> 마케팅 활용</p>
-              <div className="agree_txt">
-                <AgreeMarketing/>
-              </div>
+              <p className="t fz18 ffsd6 pb25"><span className="ffsd4 c9">(선택)</span> 마케팅 활용<button type="button" className="agree_open_btn" onClick={e => setOpenMarketing(!openMarketing)}></button></p>
+              {openMarketing ?
+                <div className="agree_txt">
+                  <AgreeMarketing/>
+                </div>
+                : 
+                <></>
+              }
               <div className="agree_check">
                 <label htmlFor="agree2" className="fz16 c3">
                   <input type="checkbox" id="agree2" name="agreeMarketing" value={formData.agreeMarketing} checked={formData.agreeMarketing === 'true'} onChange={changeValue} />
@@ -526,8 +728,18 @@ export default function ConsultRequest(){
                 </label>
               </div>
             </div>
-            <div className="sbm_btn" ref={(el) => (elementsRef.current[16] = el)}>
-              <button type="submit" className="fz18 ffsd6" disabled={sbmBtnDisabled}>신청하기</button>
+            <div className="btn_pos">
+              <div className="sbm_btn">
+                {sbmBtnDisabled === true ?
+                  <>
+                    <span className="req_msg"></span>
+                    <span className="sbm fz18 ffsd6" onClick={reqCheck}></span>
+                  </>
+                  
+                  :
+                  <button type="submit" className="fz18 ffsd6" disabled={sbmBtnDisabled}>신청하기</button>
+                }
+              </div>
             </div>
           </div>
         </div>

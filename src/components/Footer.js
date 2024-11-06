@@ -26,7 +26,7 @@ export default function Footer(){
         <p className="f_copyright tac pb100">Copyright@ 2024 우연 Co. Ltd. All Rights Reserved.</p>
       </div>
       <div className="floating_link">
-        <a href="/consult/request" className="request ffsd6">상담<br/>신청</a>
+        <a href="tel:02-2138-0638" className="request ffsd6">상담<br/>신청</a>
       </div>
     </footer>
   )
