@@ -1,7 +1,6 @@
 import footerLogo from "../assets/img/footer_logo.svg";
 
 export default function Footer({topPath}){
-  console.log('topPath', topPath.pathname)
   return(
     <footer className="footer">
       <div className="inday_container">
