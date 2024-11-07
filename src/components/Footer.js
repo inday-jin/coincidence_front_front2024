@@ -27,7 +27,7 @@ export default function Footer({topPath}){
       </div>
       <div className="floating_link">
         {topPath.pathname !== '/consult/request' ?
-          <a href="tel:02-2138-0638" className="request ffsd6">상담<br/>신청</a>
+          <a href="/consult/request" className="request ffsd6">상담<br/>신청</a>
           :
           <></>
         }
