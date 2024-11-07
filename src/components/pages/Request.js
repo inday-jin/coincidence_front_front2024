@@ -16,7 +16,7 @@ export default function ConsultRequest(){
 
   const [formData, setFormData] = useState({
     location: '',
-    conGender: '남자',
+    conGender: '',
     firstDate: '',
     firstDateTime: '',
     secondDate: '',
@@ -28,21 +28,21 @@ export default function ConsultRequest(){
     phone3: '',
     kakaoTalkId: '',
     birth_year: '',
-    gender: '남자',
+    gender: '',
     recommender: '',
     education: '',
     educationKor: '',
-    region: '서울특별시',
+    region: '',
     agreePrivacy: '',
     agreeMarketing: '',
-    subPath: '김달',
+    subPath: '',
     subPathInp: '',
   });
 
   const genderLst = ["남자", "여자", "무관"];
   const reqTimeLst = ['10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'];
   const regionLst = ["서울특별시", "인천/경기", "대구/경북", "부산/울산/경남", "대전/세종/충청", "광주/전라", "강원/제주"];
-  const subPathLst = ["김달", "블라인드", "네이버", "인스타그램", "배너 광고", "네이버카페", "지인", "기타"];
+  const subPathLst = ["김달", "인스타그램", "인터넷 배너광고", "블라인드", "네이버 카페", "네이버 검색", "지인", "기타"];
   const reqKorMsg = [
     {name: 'location', txt: '지사'},
     {name: 'conGender', txt: '희망상담사 성별'},
@@ -108,7 +108,7 @@ export default function ConsultRequest(){
   const getOptData = useCallback(async () => {
     // 초기화 데이터(지사, 출생년도, 신청불가일정)
 
-    // 지사 데이터 첫번째 값으로 초기화
+    // 지사 데이터
     const locationResponse = await getData(`/api/location/list`);
     setLocationList(locationResponse.data);
 
@@ -120,20 +120,10 @@ export default function ConsultRequest(){
     const dateResponse = await getData(`/api/counseling/date/busy`);
     setNoSelDate(dateResponse.data.dates);
 
-    
-
     // 최종학력
     const educationLst = await getData(`/api/education/list`);
     setEducationData(educationLst.data);
 
-    setFormData(prevFormData => ({
-      ...prevFormData,
-      location: locationResponse.data[0].id,
-      education: educationLst.data[0].id,
-      educationKor: educationLst.data[0].name
-    }));
-
-    
 
     if(window.kakaoPixel){
       await window.kakaoPixel('2665275622713308583').pageView();
@@ -149,10 +139,20 @@ export default function ConsultRequest(){
 
 
   async function changeValue(e){
-    // 값 입력
-
     const { name, value, checked } = e.target;
-    if(name === 'conGender'){
+
+
+    if(name === 'location'){
+      // 지사
+      const selLocationData = locationList.filter(data => data.id === Number(value));
+      console.log(locationList, selLocationData[0], value);
+      setFormData({
+        ...formData,
+        location: selLocationData[0].id,
+      });
+      console.log(formData)
+
+    }else if(name === 'conGender'){
       // 희망상담사 성별시 1,2차 선택 날짜, 시간 초기화
       setFormData(prevFormData => ({
         ...prevFormData,
@@ -405,6 +405,33 @@ export default function ConsultRequest(){
 
   const elementsRef = useRef([]);
 
+  const sbmElementRef = useRef(null);
+  const [isSbmVisible, setIsSbmVisible] = useState(false);
+
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (sbmElementRef.current) {
+        const elementTop = sbmElementRef.current.getBoundingClientRect().top + window.scrollY;
+        const scrollPosition = window.scrollY;
+
+        if (scrollPosition >= elementTop) {
+          setIsSbmVisible(true);
+        } else {
+          setIsSbmVisible(false);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+
+
   useEffect(() => {
 
     elementsRef.current.forEach((element) => {
@@ -454,7 +481,7 @@ export default function ConsultRequest(){
       }
       
       <form onSubmit={sbm}>
-        <div className="inday_container request_page pb120">
+        <div className="inday_container request_page pb120" ref={sbmElementRef}>
           <h3 className="fz40 ffsd6 tac pt120 pb50" ref={(el) => (elementsRef.current[0] = el)}>원하시는 일정에 맞춰 간편하게 상담 예약하세요.</h3>
           <p className="fz22 c3 tac pb80" ref={(el) => (elementsRef.current[1] = el)}>수도권 회원의 경우 전화 상담은 불가하고 방문 상담만 가능하며, 평일뿐만 아니라 주말, 공휴일도 상담 예약 가능합니다.<br/>한국 국적이 아니신 분들은 상담 및 가입이 불가하오니 양해 바랍니다.</p>
           <div className="request_inp_box">
@@ -475,6 +502,7 @@ export default function ConsultRequest(){
                   :
                   <>
                     <select className="inp" name="location" value={formData.location} onChange={changeValue}>
+                      <option>지사를 선택해 주세요.</option>
                       {locationList.map((item, i) => {
                         return(
                         <option value={item.id} key={i}>{item.name}</option>
@@ -500,6 +528,7 @@ export default function ConsultRequest(){
                   :
                   <>
                     <select className="inp" name="conGender" value={formData.conGender} onChange={changeValue}>
+                      <option>희망상담사 성별을 선택해 주세요.</option>
                       {genderLst.map((item, i) => {
                         return(
                         <option value={item} key={i}>{item}</option>
@@ -585,6 +614,7 @@ export default function ConsultRequest(){
                 :
                   <>
                     <select className="inp" name="gender" value={formData.gender} onChange={changeValue}>
+                      <option>성별을 선택해 주세요.</option>
                       {genderLst.map((item, i) => {
                         if(item !== '무관'){
                           return(
@@ -615,6 +645,7 @@ export default function ConsultRequest(){
                 :
                   <>
                     <select className="inp" name="region" value={formData.region} onChange={changeValue}>
+                      <option>거주 지역을 선택해 주세요.</option>
                       {regionLst.map((item, i) => {
                         return(
                           <option value={item} key={i}>{item}</option>
@@ -642,6 +673,7 @@ export default function ConsultRequest(){
                 :
                   <>
                     <select className="inp" name="education" value={formData.education} onChange={changeValue}>
+                      <option>최종학력을 선택해 주세요.</option>
                       {educationData.map((item, i) => {
                         return(
                           <option value={item.id} key={i}>{item.name}</option>
@@ -669,6 +701,7 @@ export default function ConsultRequest(){
                 :
                   <>
                     <select className="inp" name="subPath" value={formData.subPath} onChange={changeValue}>
+                      <option>가입 경로를 선택해 주세요.</option>
                       {subPathLst.map((item, i) => {
                         return(
                           <option value={item.id} key={i}>{item}</option>
@@ -728,19 +761,23 @@ export default function ConsultRequest(){
                 </label>
               </div>
             </div>
-            <div className="btn_pos">
-              <div className="sbm_btn">
-                {sbmBtnDisabled === true ?
-                  <>
-                    <span className="req_msg"></span>
-                    <span className="sbm fz18 ffsd6" onClick={reqCheck}></span>
-                  </>
-                  
-                  :
-                  <button type="submit" className="fz18 ffsd6" disabled={sbmBtnDisabled}>신청하기</button>
-                }
+            {isSbmVisible ? 
+              <div className="btn_pos">
+                <div className="sbm_btn">
+                  {sbmBtnDisabled === true ?
+                    <>
+                      <span className="req_msg"></span>
+                      <span className="sbm fz18 ffsd6" onClick={reqCheck}></span>
+                    </>
+                    
+                    :
+                    <button type="submit" className="fz18 ffsd6" disabled={sbmBtnDisabled}>신청하기 {isSbmVisible}</button>
+                  }
+                </div>
               </div>
-            </div>
+              :
+              <></>
+            }
           </div>
         </div>
       </form>

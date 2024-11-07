@@ -249,6 +249,14 @@
       .sbm{display: block;width: 245px;height: 60px;margin: 0 auto;text-align: center;color: #fff;background-color: #ddd;border-radius: 40px;line-height: 60px;
         &::after{content: '신청하기';}
       }
+      
+    }
+    @include respond-to('d594'){
+      bottom:0;
+      .sbm_btn{
+        button,.sbm{width: 100%;border-radius: 0;}
+      }
+      
     }
   }
   

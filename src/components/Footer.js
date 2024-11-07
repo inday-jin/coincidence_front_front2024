@@ -1,6 +1,7 @@
 import footerLogo from "../assets/img/footer_logo.svg";
 
-export default function Footer(){
+export default function Footer({topPath}){
+  console.log('topPath', topPath.pathname)
   return(
     <footer className="footer">
       <div className="inday_container">
@@ -26,7 +27,11 @@ export default function Footer(){
         <p className="f_copyright tac pb100">Copyright@ 2024 우연 Co. Ltd. All Rights Reserved.</p>
       </div>
       <div className="floating_link">
-        <a href="tel:02-2138-0638" className="request ffsd6">상담<br/>신청</a>
+        {topPath.pathname !== '/consult/request' ?
+          <a href="tel:02-2138-0638" className="request ffsd6">상담<br/>신청</a>
+          :
+          <></>
+        }
       </div>
     </footer>
   )
