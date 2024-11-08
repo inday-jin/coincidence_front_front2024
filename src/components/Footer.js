@@ -2,7 +2,7 @@ import footerLogo from "../assets/img/footer_logo.svg";
 
 export default function Footer({topPath}){
   return(
-    <footer className="footer">
+    <footer className={`footer ${topPath.pathname !== '/consult/request' ? '': 'req_footer'}`}>
       <div className="inday_container">
         <div className="f_logo"><img src={footerLogo} alt="" /></div>
         <div className="f_nav pb50">

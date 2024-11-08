@@ -996,6 +996,9 @@
       padding-top: 25px;
     }
   }
+  @include respond-to('d594'){
+    &.req_footer{display: none;}
+  }
 }
 
 .floating_link{display: none;position: fixed;right: 10px;bottom: 10px;
