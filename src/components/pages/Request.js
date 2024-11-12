@@ -354,6 +354,9 @@ export default function ConsultRequest(){
           event_label: 'consultation_request'
         });
       }
+	if(window._tfa){
+        window._tfa.push({notify: 'event', name: 'lead', id: 1771700});
+      }
 
       const locationKor = locationList.filter(item => item.id === formData.location);
 
