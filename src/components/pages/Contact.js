@@ -102,8 +102,11 @@ export default function Contact(){
 							<table>
 								<tbody>
 									<tr>
-										<th className="fz18 ffsd6">E-mail</th>
-										<td className="fz18 c3">coihelp@naver.com</td>
+										<th className="fz18 ffsd6" rowSpan={2}>E-mail</th>
+										<td className="fz18 c3">help@woo-yeon.com</td>
+									</tr>
+									<tr>
+									<td className="fz18 c3">mkt@woo-yeon.com</td>
 									</tr>
 								</tbody>
 							</table>

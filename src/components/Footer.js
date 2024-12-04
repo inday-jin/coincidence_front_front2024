@@ -21,7 +21,7 @@ export default function Footer({topPath}){
           <span className="dib">주소 <b>서울특별시 서초구 서초동 1330-3 엔데버빌딩 9층 2호</b></span>
           <span className="dib">TEL <b>02-2138-0638</b></span>
           <span className="dib">통신판매업신고 <b>2024-서울강남-02849</b></span>
-          <span className="dib">E-mail <b>coihelp@naver.com</b></span>
+          <span className="dib">E-mail <b>help@woo-yeon.com</b></span>
         </p>
         <p className="f_copyright tac pb100">Copyright@ 2024 우연 Co. Ltd. All Rights Reserved.</p>
       </div>
