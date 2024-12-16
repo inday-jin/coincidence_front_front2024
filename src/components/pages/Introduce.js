@@ -5,7 +5,6 @@ import 'swiper/swiper-bundle.min.css';
 
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-
 import Popup from '../Popup';
 
 import mainSlide1 from '../../assets/img/main_slide_pc1.png';
@@ -22,6 +21,7 @@ import Part4 from '../Part4';
 import Part5 from '../Part5';
 
 import {getData} from '../script/api';
+import Popup2 from '../Popup2';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -63,7 +63,7 @@ export default function Main(){
   
   return(
     <>
-      {/* <Popup/> */}
+      <Popup2/>
       <main className="main_wrap">
         <div className="main_slide">
           <section className="main_slide">
