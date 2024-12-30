@@ -413,9 +413,9 @@
 }
 
 .product_lst{display: flex;justify-content: space-between;
-  .item{overflow: hidden;width: 650px;border-radius: 20px;border: 1px solid #eee;background-color: #fff;
+  .item{overflow: hidden;width: calc(50% - 10px);border-radius: 20px;border: 1px solid #eee;background-color: #fff;
     .t1{text-align: center;}
-    .sale_price{position: relative;background-image: url('../img/sale_price.svg');background-repeat: no-repeat;background-position: calc(50% - 55px) 15px;text-align:center;
+    .sale_price{position: relative;background-image: url('../img/sale_price.svg');background-repeat: no-repeat;background-position: calc(50% - 75px) 15px;text-align:center;
       .price{display: inline-block;}
       .sale_percent{display: inline-block;margin-left: 25px;padding: 5px 10px;background-color: #35ADE3;border-radius: 30px;}
 
@@ -438,7 +438,7 @@
         .t1{background-color: #aaa;}
       }
       &:nth-child(2){
-        .t1{background-color: #2AC797;}
+        .t1{background-color: #166EE2;}
       }
       &:nth-child(3){
         .t1{background-color: #166EE2;}
@@ -450,6 +450,7 @@
       .t1{color: #999;}
     }
   }
+  .sameday_per{color: #166EE2;}
   @include respond-to('d720'){
     display: block;
   }
