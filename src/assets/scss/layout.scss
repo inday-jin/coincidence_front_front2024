@@ -413,9 +413,9 @@
 }
 
 .product_lst{display: flex;justify-content: space-between;
-  .item{overflow: hidden;width: 420px;border-radius: 20px;border: 1px solid #eee;background-color: #fff;
+  .item{overflow: hidden;width: 650px;border-radius: 20px;border: 1px solid #eee;background-color: #fff;
     .t1{text-align: center;}
-    .sale_price{position: relative;background-image: url('../img/sale_price.svg');background-repeat: no-repeat;background-position: calc(50% - 75px) 15px;text-align:center;
+    .sale_price{position: relative;background-image: url('../img/sale_price.svg');background-repeat: no-repeat;background-position: calc(50% - 55px) 15px;text-align:center;
       .price{display: inline-block;}
       .sale_percent{display: inline-block;margin-left: 25px;padding: 5px 10px;background-color: #35ADE3;border-radius: 30px;}
 
@@ -424,7 +424,7 @@
       }
     }
     @include respond-to('d1000'){
-      width: calc(33.333% - 10px);
+      width: calc(50% - 10px);
     }
     @include respond-to('d720'){
       width: 100%;margin-bottom: 20px;

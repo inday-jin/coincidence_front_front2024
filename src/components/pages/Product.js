@@ -62,7 +62,7 @@ export default function Products(){
     <>
       <div className="inday_container pb120">
         <h2 className="main_tit fz50 ffsd6 pb40 pt120 tac" ref={(el) => (elementsRef.current[0] = el)}><span className="mark_bg">우연 기간제 멤버십</span></h2>
-        <p className="tac fz22 c3 pb80" ref={(el) => (elementsRef.current[1] = el)}>기간제 서비스는 <span className="c1 ffsd6">기간 내 횟수 제한 없이 만남이 가능</span>한서비스 입니다.<br/>계약 기간 동안 매니저님과 원활히 소통하여 평생 인연 찾으시기 바랍니다.<br/>*우연은 공정거래위원회 국내 결혼 표준 약관을 100% 준수합니다.</p>
+        <p className="tac fz22 c3 pb80" ref={(el) => (elementsRef.current[1] = el)}>기간제 서비스는 <span className="c1 ffsd6">기간 내 횟수 제한 없이 만남이 가능</span>한서비스 입니다.<br/>계약 기간 동안 매니저님과 원활히 소통하여 평생 인연 찾으시기 바랍니다.<br/>*우연은 공정거래위원회 국내 결혼 표준 약관을 100% 준수합니다.<br/>우연은 공정 거래위원회 국내 결혼 표준 약관을 준수하며, 환불 약정 없이 이용 부금만 차감 후 전액 환불을 약속합니다.</p>
         <div className="product_lst subscribe">
           {prodData[0].map((item, i) => {
             const match = item.desc.match(/\[(.*?)\]/);
@@ -88,7 +88,7 @@ export default function Products(){
                   {item.salePrice !== 0 ?
                     <div className="sale_price pb10">
                       <p className="price tac fz20 c9">{String(item.salePrice).replace(/\B(?=(\d{3})+(?!\d))/g, ",")} <span className="fz20 ffsd4">원</span></p>
-                      <span className="sale_percent fz24 ffsd6 cf">{otherContent} OFF</span>
+                      <span className="sale_percent fz24 ffsd6 cf">{otherContent}</span>
                     </div>
                   :
                     <div className="sale_price pb10 none">
@@ -113,7 +113,7 @@ export default function Products(){
           {prodData[1].map((item, i) => {
             const match = item.desc.match(/\[(.*?)\]/);
             const bracketContent = match ? match[0].replace("[", "").replace("]", "") : "";
-            const translationMap = {BASIC: "베이직", PREMIUM: "프리미엄", DIAMOND: "다이아몬드",};
+            const translationMap = {BASIC: "베이직", PREMIUM: "회원가입비", DIAMOND: "다이아몬드",};
             const translatedContent = translationMap[bracketContent] || bracketContent;
 
             let otherContent = item.desc
@@ -132,13 +132,14 @@ export default function Products(){
                   <p className="t2 tac fz20 pb35">{item.name}</p>
                   <i></i>
                   <p className="price tac fz30 ffsd6 pb10">{String(item.price).replace(/\B(?=(\d{3})+(?!\d))/g, ",")} <span className="fz20 ffsd4">원</span></p>
-                  <p className="vat tac fz16 c6 pb35">VAT 포함</p>
-                  <p className="desc tac fz18 c3">{otherContent}</p>
+                  <p className="vat tac fz16 c6 tac">VAT 포함</p>
+                  {/* <p className="desc tac fz18 c3">{otherContent}</p> */}
                 </div>
               </div>
             )
           })}
           </div>
+          <p className="pt30 fz16 c3 tac" ref={(el) => (elementsRef.current[12] = el)}>* 지방회원의 경우, 상담 시 자세하게 안내드릴 예정입니다.</p>
         </div>
       </div>
     </>
