@@ -23,7 +23,20 @@ export default function Footer({topPath}){
           <span className="dib">통신판매업신고 <b>2024-서울강남-02849</b></span>
           <span className="dib">E-mail <b>help@woo-yeon.com</b></span>
         </p>
-        <p className="f_copyright tac pb100">Copyright@ 2024 우연 Co. Ltd. All Rights Reserved.</p>
+        <p className="f_copyright tac pb25">Copyright@ 2024 우연 Co. Ltd. All Rights Reserved.</p>
+        <p className="pb100" style={{ textAlign: 'center' }}>
+          <a 
+            href="https://blog.naver.com/coincidence4096" 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            <img 
+              src="/blog.png" 
+              alt="Naver Blog" 
+              style={{ width: '50px', height: '50px', display: 'inline-block', verticalAlign: 'middle' }} 
+            />
+          </a>
+        </p>
       </div>
       <div className="floating_link">
         {topPath.pathname !== '/consult/request' ?
