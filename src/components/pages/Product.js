@@ -96,7 +96,14 @@ export default function Products(){
                     </div>
                   }
                   <p className="price tac fz30 ffsd6 pb10">{String(item.price).replace(/\B(?=(\d{3})+(?!\d))/g, ",")} <span className="fz20 ffsd4">원</span></p>
-                  <p className="vat tac fz16 c6 pb35">VAT 포함</p>
+                  <p className="vat tac fz16 c6">VAT 포함</p>
+                  <hr style={{
+  width: '50%',
+  height: '2px',
+  backgroundColor: '#e5e5e5',
+  border: 'none',
+  margin: '20px auto'
+}} />
                   <div className="bottom_txt_box tac">
                     <p className="p1 fz18">당일 결제 혜택</p>
                     <p className="p2 fz24 ffsd6"><span className="sameday_per">{item.samedayPer}%</span> 추가 할인</p>
@@ -107,7 +114,7 @@ export default function Products(){
             )
           })}
         </div>
-        <p className="pt30 tac fz16 c3" ref={(el) => (elementsRef.current[13] = el)}>우연은 정찰제로 운영되며 타사와 다르게 상담 후 가격이 변동되지 않습니다.</p>
+        <p className="pt30 tac fz22 c3" ref={(el) => (elementsRef.current[13] = el)}>우연은 정찰제로 운영되며 타사와 다르게 상담 후 가격이 변동되지 않습니다.</p>
       </div>
       <div className="membership_lst">
         <div className="inday_container">
@@ -144,7 +151,7 @@ export default function Products(){
             )
           })}
           </div>
-          <p className="pt30 fz16 c3 tac" ref={(el) => (elementsRef.current[12] = el)}>* 지방회원의 경우, 상담 시 자세하게 안내드릴 예정입니다.</p>
+          <p className="pt30 fz16 c3 tac" ref={(el) => (elementsRef.current[12] = el)}>*지방회원의 경우 보다 합리적인 가격으로 상담 시 자세하게 안내 드릴 예정입니다.</p>
         </div>
       </div>
     </>
