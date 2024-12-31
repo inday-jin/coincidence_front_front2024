@@ -63,7 +63,7 @@ export default function Main(){
   
   return(
     <>
-      <Popup2/>
+      {/* <Popup2/> */}
       <main className="main_wrap">
         <div className="main_slide">
           <section className="main_slide">
