@@ -16,15 +16,18 @@ export default function Products(){
     const responseObj = [[],[],[]];
     if (response?.data) {
       response.data.forEach((item) => {
-        if (item.type === "subscribe") {
-          responseObj[0].push(item);
-        } else if (item.type === "joinFee") {
-          if (! item.name.includes("얼리버드")) {
-            responseObj[1].push(item);
-          } else {
-            responseObj[2].push(item);
+        if(item.id >264){
+          if (item.type === "subscribe") {
+            responseObj[0].push(item);
+          } else if (item.type === "joinFee") {
+            if (! item.name.includes("얼리버드")) {
+              responseObj[1].push(item);
+            } else {
+              responseObj[2].push(item);
+            }
           }
         }
+        
       });
     }
     setProdData(responseObj);
