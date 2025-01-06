@@ -165,9 +165,12 @@ export default function ConsultRequest(){
       setNoSelDateTime1([]);
       setNoSelDateTime2([]);
     }else if(name === 'firstDate' || name === 'secondDate'){
+      setAlertMsg('');
+
       // 1,2 순위 상담 일정 날짜 선택
       const selDateCheck = noSelDate.filter(date => date === value);
       if(selDateCheck.length > 0){
+
         // alert 메세지 생성 및 출력
         const groupedDates = noSelDate.reduce((acc, date) => {
           const [year, month, day] = date.split('-');
@@ -180,7 +183,7 @@ export default function ConsultRequest(){
         }, {});
       
         let resultMsg = '';
-      
+
         Object.keys(groupedDates)
         .sort()
         .forEach((yearMonth, index, array) => {
@@ -193,10 +196,14 @@ export default function ConsultRequest(){
           }
         });
         resultMsg += '\n\n위 일정들은 신청 마감되었습니다.\n다른 날짜를 선택해주세요.';
-
         setAlertMsg(resultMsg);
+        setFormData({
+          ...formData,
+          [name]: '',
+        });
         return false;
       }else{
+        setAlertMsg('');
         // 선택 가능한 시간대 확인
         const params = new URLSearchParams();
         params.append("date", value);
