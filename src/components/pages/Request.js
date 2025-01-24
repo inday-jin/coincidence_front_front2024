@@ -7,6 +7,7 @@ import Alert from '../Alert';
 
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import Popup3 from '../Popup3';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -408,7 +409,10 @@ export default function ConsultRequest(){
         recommender: formData.recommender !== '' ? 'Y' : 'N',
         subPath: formData.subPath !== '기타' ? formData.subPath : `${formData.subPath} ${formData.subPathInp}`,
       });
-      window.location.href = '/result';
+      setIsPopUpVisible(true)
+
+
+      // window.location.href = '/result';
       //navigate('/result');
     }else{}
   }
@@ -417,7 +421,7 @@ export default function ConsultRequest(){
 
   const sbmElementRef = useRef(null);
   const [isSbmVisible, setIsSbmVisible] = useState(false);
-
+  const [isPopUpVisible, setIsPopUpVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -489,7 +493,9 @@ export default function ConsultRequest(){
         <Alert alertMsg={alertMsg} alertClose={alertClose} /> 
         : <></>
       }
-      
+      {isPopUpVisible?<Popup3></Popup3>:<></>
+
+      }
       <form onSubmit={sbm}>
         <div className="inday_container request_page pb120" ref={sbmElementRef}>
           <h3 className="fz40 ffsd6 tac pt120 pb50" ref={(el) => (elementsRef.current[0] = el)}>원하시는 일정에 맞춰 간편하게 상담 예약하세요.</h3>
