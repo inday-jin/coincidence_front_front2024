@@ -1,6 +1,6 @@
- const defaultUrl = 'https://test-front.coincidence.co.kr';
-// const defaultUrl = 'https://www.coincidence.co.kr';
 //const defaultUrl = 'http://3.34.235.234';
+const defaultUrl = 'https://test-front.coincidence.co.kr';
+//const defaultUrl = 'https://www.coincidence.co.kr';
 //const defaultUrl = 'http://localhost:4010';
 
 export async function getData(url){
