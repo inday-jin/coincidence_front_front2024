@@ -409,10 +409,10 @@ export default function ConsultRequest(){
         recommender: formData.recommender !== '' ? 'Y' : 'N',
         subPath: formData.subPath !== '기타' ? formData.subPath : `${formData.subPath} ${formData.subPathInp}`,
       });
-      setIsPopUpVisible(true)
+      //setIsPopUpVisible(true)
 
 
-      // window.location.href = '/result';
+      window.location.href = '/result';
       //navigate('/result');
     }else{}
   }
