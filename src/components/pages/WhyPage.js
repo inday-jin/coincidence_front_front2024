@@ -131,7 +131,7 @@ export default function Whypage(path){
         <section className="center_txt_cont">
           <h3 className="fz50 ffsbb" ref={(el) => (elementsRef.current[14] = el)}>
             <span>한 두시간 커피 먹고 대화하는데</span>
-            <span className="point">40~100만원은 과하지 않나요?</span>
+            <span className="point">100~300만원은 과하지 않나요?</span>
           </h3>
           <p className="ffsb fz22 ffsbr" ref={(el) => (elementsRef.current[15] = el)}>누구보다 정직하게, 가격 거품을 빼고 합리적으로 더 다양하고 많은 분들을 모셔 좋은 인연을 만들고자 했습니다.</p>
         </section>
