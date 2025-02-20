@@ -7,11 +7,6 @@ import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Popup from '../Popup';
 
-import mainSlide1 from '../../assets/img/main_slide_pc1.png';
-import mainSlide1m from '../../assets/img/main_slide_m1.png';
-import mainSlide2 from '../../assets/img/main_slide_pc2.png';
-import mainSlide2m from '../../assets/img/main_slide_m2.png';
-
 import introImg from '../../assets/img/main_intro_img.png';
 
 import Part1 from '../Part1';
@@ -28,13 +23,19 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Main(){
   const elementsRef = useRef([]);
   const [reviewLst, setReviewLst] = useState([]);
+  const [imageLst, setImageLst] = useState([]);
 
+  async function getImageLst(){
+    const list = await getData(`/api/image/mainTop`);
+    setImageLst(list.data.data);
+  }
   async function getReviewLst(){
     const list = await getData(`/api/review/clientmainlist`);
     setReviewLst(list.data.data);
   }
   useEffect(() =>{
     getReviewLst();
+    getImageLst();
   },[]);
   useEffect(() => {
     if (reviewLst.length > 0) {
@@ -93,18 +94,16 @@ export default function Main(){
                 }
               }}
             >
-              <SwiperSlide>
-                <picture className="bg">
-                  <source srcSet={mainSlide1} media="(min-width: 767px)" />
-                  <img src={mainSlide1m} alt="" />
-                </picture>
-              </SwiperSlide>
-              <SwiperSlide>
-                <picture className="bg">
-                  <source srcSet={mainSlide2} media="(min-width: 767px)" />
-                  <img src={mainSlide2m} alt="" />
-                </picture>
-              </SwiperSlide>
+              {imageLst.map((item, i) => {
+                return(
+                <SwiperSlide key={i}>
+                  <picture className="bg">
+                    <source srcSet={'https://d3txsylzm2ga7z.cloudfront.net/'+item.pc_src} media="(min-width: 767px)" />
+                    <img src={'https://d3txsylzm2ga7z.cloudfront.net/'+item.m_src} alt="" />
+                  </picture>
+                </SwiperSlide>
+                )
+              })}
             </Swiper>
             <div className="main_pagi"></div>
           </section>
