@@ -43,7 +43,7 @@ export default function ConsultRequest(){
   const genderLst = ["남자", "여자", "무관"];
   const reqTimeLst = ['10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'];
   const regionLst = ["서울특별시", "인천/경기", "대구/경북", "부산/울산/경남", "대전/세종/충청", "광주/전라", "강원/제주"];
-  const subPathLst = ["김달", "인스타그램", "인터넷 배너광고", "블라인드", "네이버 카페", "네이버 검색", "지인", "기타"];
+  const subPathLst = ["인스타그램", "인터넷 배너광고", "김달", "블라인드", "네이버 카페", "네이버 검색", "지인", "기타"];
   const reqKorMsg = [
     {name: 'location', txt: '지사'},
     {name: 'conGender', txt: '희망상담사 성별'},
